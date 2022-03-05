@@ -109,7 +109,11 @@ public class Stage1 {
 	 * otherwise return the sum of the first and the last items 
 	 */
 	public static int getSumFirstLastItems(int[] data) {
-		return 0; //to be completed
+		if (data == null || data.length < 2) {
+			return 0;
+		}
+		int sum = data[0] + data[data.length-1];
+		return sum;
 	}
 
 	/**
@@ -120,7 +124,14 @@ public class Stage1 {
 	 * false otherwise
 	 */
 	public static boolean itemExistsAt(int[] data, int idx) {
-		return false; //to be completed
+		if(data == null) {
+			return false;
+		}
+
+		if (idx < data.length && idx >= 0) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -132,7 +143,13 @@ public class Stage1 {
 	 * return 0 otherwise
 	 */
 	public static int get(int[] data, int idx) {
-		return 0; //to be completed
+		if(data == null) {
+			return 0;
+		}
+		if(idx < data.length && idx >= 0) {
+			return data[idx];
+		}
+		return 0;
 	}
 
 	/**
@@ -142,7 +159,11 @@ public class Stage1 {
 	 * otherwise return an array of size n
 	 */
 	public static int[] generate(int n) {
-		return new int[0]; //to be completed
+		if (n < 0) {
+			return null;
+		}
+		int[] arr = new int[n];
+		return arr;
 	}
 
 	/**
@@ -153,7 +174,13 @@ public class Stage1 {
 	 * return false if either is null
 	 */
 	public static boolean sameSize(int[] a, int[] b) {
-		return false; //to be completed
+		if (a == null || b == null) {
+			return false;
+		}
+		if (a.length == b.length) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -165,6 +192,17 @@ public class Stage1 {
 	 * return false is all other scenarios
 	 */
 	public static boolean sameItemAt(int[] a, int[] b, int idx) {
-		return false; //to be completed
+		if (a == null || b == null || a.length == 0 || b.length == 0) {
+			return false;
+		}
+		if (idx > a.length-1 || idx > b.length-1 || idx<0) {
+			return false;
+		}
+		
+		
+		if(a[idx] == b[idx]) {
+				return true;
+		}
+		return false;
 	}
 }
