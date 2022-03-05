@@ -42,7 +42,7 @@ public class IceCreamPrices {
 			return true;
 		return false;
 
-//another test another test
+		//another test another test
 	}
 
 	/**	 	  			     		 		    		 	
@@ -227,10 +227,10 @@ public class IceCreamPrices {
 		for(int i = 0; i<sizeAndPrices.length; i++) {	
 			if (sizeAndPrices[i][0] >= minSize && iceCreamDetails[i][2].equalsIgnoreCase(type)) {
 				min = sizeAndPrices[i][1];
-					
+
 			}
 		}
-		
+
 		for(int i = 0; i<sizeAndPrices.length; i++) {	
 			if (sizeAndPrices[i][0] >= minSize && iceCreamDetails[i][2].equalsIgnoreCase(type)) {
 				if(sizeAndPrices[i][1] < min) {
@@ -240,9 +240,9 @@ public class IceCreamPrices {
 		}
 		return min;
 	}	 	
-//what
-	
-	
+	//what
+
+
 
 	/**	 	  			     		 		    		 	
 	 * D
@@ -251,9 +251,28 @@ public class IceCreamPrices {
 	 *         name that occurs first in the dataset should also occur first in the
 	 *         returned array.
 	 */	 	  			     		 		    		 	
-	public String[] getUniqueCompanies() {	 	  			     		 		    		 	
-		return null;
-	}	 	  			     		 		    		 	
+	public String[] getUniqueCompanies() {
+		String[] companies = new String [iceCreamDetails.length];
+		
+		//put all companies into an array
+		for(int i = 0; i<iceCreamDetails.length; i++) {
+					companies[i] = iceCreamDetails[i][0];
+				}
+		
+		int j = 0;
+		for(int i = 0; i<companies.length-1; i++) {
+			if (companies[i].compareTo(companies[i+1]) > 0) {
+				companies[i] = companies[i+1];
+			}
+		}
+		return companies;
+		
+	}
+	
+	
+	
+	
+	
 
 	/**	 	  			     		 		    		 	
 	 * D/HD
