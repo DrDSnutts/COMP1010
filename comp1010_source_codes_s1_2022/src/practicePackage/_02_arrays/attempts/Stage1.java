@@ -15,7 +15,9 @@ public class Stage1 {
 	 * @return true if array is null, false otherwise
 	 */
 	public static boolean isNull(int[] data) {
-		return false; //to be completed
+		if (data == null)
+			return true;
+		return false;
 	}//test
 
 	/**
@@ -24,7 +26,9 @@ public class Stage1 {
 	 * @return true if array passed is empty (or null), false otherwise
 	 */
 	public static boolean isEmpty(int[] data) {
-		return false; //to be completed
+		if (data == null || data.length == 0)
+			return true;
+		return false;
 	}
 
 	/**
@@ -34,7 +38,10 @@ public class Stage1 {
 	 * otherwise return the index of the last item
 	 */
 	public static int getLastItemIndex(int[] data) {
-		return 0; //to be completed
+		if (data == null || data.length == 0) {
+			return 0;
+		}
+		return data.length-1;
 	}
 
 	/**
@@ -44,7 +51,10 @@ public class Stage1 {
 	 * otherwise return the last item
 	 */
 	public static int getLastItem(int[] data) {
-		return 0; //to be completed
+		if (data == null || data.length == 0) {
+			return 0;
+		}
+		return data[data.length-1];
 	}
 
 	/**
@@ -54,7 +64,10 @@ public class Stage1 {
 	 * otherwise return the second last item
 	 */
 	public static int getSecondLastItem(int[] data) {
-		return 0; //to be completed
+		if (data == null || data.length < 2) {
+			return 0;
+		}
+		return data[data.length-2];
 	}
 
 	/**
@@ -66,7 +79,13 @@ public class Stage1 {
 	 * otherwise return false
 	 */
 	public static boolean secondLastLessThanLast(int[] data) {
-		return false; //to be completed
+		if (data == null || data.length < 2) {
+			return false;
+		}
+		if (data[data.length-2] < data[data.length-1]) {
+			return true;
+		}
+		return false;	
 	}
 
 	/**
@@ -77,7 +96,10 @@ public class Stage1 {
 	 * return the item to the right of the "splitting line"
 	 */
 	public static int getMedian(int[] data) {
-		return 0; //to be completed
+		if (data == null || data.length == 0) {
+			return 0;
+		}
+		return data[data.length/2];
 	}
 
 	/**
