@@ -457,7 +457,13 @@ public class Stage2 {
 	 * return false if array is null.
 	 */
 	public static boolean contains(int[] data, int target) {
-		return false; //to be completed
+		if(data == null|| data.length == 0)
+			return false;
+		for(int i = 0; i<data.length; i++) {
+			if(data[i] == target)
+				return true;
+		}
+		return false;
 	}
 
 	/**
@@ -468,7 +474,18 @@ public class Stage2 {
 	 * return -1 if array is null or target doesn't exist in the array.
 	 */
 	public static int indexOf(int[] data, int target) {
-		return 0; //to be completed
+		if(data == null|| data.length == 0) {
+			return -1;
+		}
+		int count = 0;
+		for(int i = 0; i<data.length; i++) {
+			if(data[i] != target) {
+				count++;
+			}
+			if(data[i] == target)
+				return count;	
+		}
+		return -1;
 	}
 
 	/**
@@ -479,7 +496,17 @@ public class Stage2 {
 	 * return -1 if array is null or target doesn't exist in the array.
 	 */
 	public static int lastIndexOf(int[] data, int target) {
-		return 0; //to be completed
+		if(data == null || data.length == 0)
+			return -1;
+		int count = 0;
+		for(int i = data.length-1; i>=0; i--) {
+			if(data[i] != target) {
+				count++;
+			}
+			if(data[i] == target)
+				return data.length-1-count;
+		}
+		return -1;
 	}
 
 	/**

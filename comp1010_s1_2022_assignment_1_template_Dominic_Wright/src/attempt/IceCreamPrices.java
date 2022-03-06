@@ -268,16 +268,14 @@ public class IceCreamPrices {
 			}
 		
 			if(companies[i] == temp[i]) {
-				break;
+				
 			}
 		}
 		return temp;
 		
 	}
 
-	private static String[] returnEmptyArr() {
-		return new String[0];
-	}
+	
 	
 	
 	
