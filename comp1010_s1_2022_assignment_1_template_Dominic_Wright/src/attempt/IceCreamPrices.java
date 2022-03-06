@@ -258,15 +258,25 @@ public class IceCreamPrices {
 		for(int i = 0; i<iceCreamDetails.length; i++) {
 					companies[i] = iceCreamDetails[i][0];
 				}
+		int n = 0;
+		String[] temp = new String[n];
 		
-		int j = 0;
-		for(int i = 0; i<companies.length-1; i++) {
-			if (companies[i].compareTo(companies[i+1]) > 0) {
-				companies[i] = companies[i+1];
+		for(int i = 0; i<companies.length; i++) {
+			if(companies[i] != temp[i]) {
+				n++;
+				temp[i] = companies[i];
+			}
+		
+			if(companies[i] == temp[i]) {
+				break;
 			}
 		}
-		return companies;
+		return temp;
 		
+	}
+
+	private static String[] returnEmptyArr() {
+		return new String[0];
 	}
 	
 	
