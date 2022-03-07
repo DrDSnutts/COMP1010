@@ -14,7 +14,24 @@ public class Stage3 {
 	 * NOTE 2: inc can be negative too :)
 	 */
 	public static int[] generatePatternedArray(int n, int init, int inc) {
-		return new int[0]; //to be completed
+		if(n < 0) {
+			return null;
+		}
+
+		int [] arr = new int [n];
+
+		if(n == 0) {
+			return arr;
+		}
+
+		if(arr != null || arr.length != 0) {
+
+			arr[0] = init;
+			for (int i = 1; i<=arr.length-1; i++) {
+				arr[i] = arr[i-1]+inc;
+			}
+		}
+		return arr;
 	}
 
 	/**
@@ -24,7 +41,32 @@ public class Stage3 {
 	 * 
 	 */
 	public static int countUniqueItems(int[] data) {
-		return 0; //to be completed
+		if(data == null || data.length == 0)
+			return 0;
+
+		int count = 0;
+
+		if(data.length == 1) {
+			return 1;
+		}
+
+		for (int i = 0; i<data.length; i++) {
+			if(countOccurrences(data, data[i]) == 1) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	private static int countOccurrences(int[] data, int target) {
+		int count = 0;
+		if(data == null || data.length == 0)
+			return 0;
+		for(int i = 0; i<data.length; i++) {
+			if(data[i] == target)
+				count++;
+		}
+		return count;
 	}
 
 	/**
@@ -36,7 +78,21 @@ public class Stage3 {
 	 * return false if either of array passed is null
 	 */
 	public static boolean identical(int[] a, int[] b) {
-		return false; //to be completed
+		if (a == null || b == null || a.length == 0 || b.length == 0)
+			return false;
+
+		int count = 0;
+		if(a.length == b.length) {
+			for (int i = 0; i<a.length; i++) {
+				if(a[i] == b[i]) {
+					count++;
+				}
+			}
+		}
+		if(count == a.length) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -48,9 +104,28 @@ public class Stage3 {
 	 * return false if either of array passed is null
 	 */
 	public static boolean contains(int[] a, int[] b) {
-		return false; //to be completed
+		if (a == null || b == null)
+			return false;
+
+		int count = 0;
+		for (int i = 0; i<a.length; i++) {
+			if(containsTarget(b,a[i]) == true)
+				count++;
+		}
+		if(count == b.length)
+			return true;
+		return false;
 	}
 
+	public static boolean containsTarget(int[] data, int target) {
+		if(data == null|| data.length == 0)
+			return false;
+		for(int i = 0; i<data.length; i++) {
+			if(data[i] == target)
+				return true;
+		}
+		return false;
+	} 
 	/**
 	 * 
 	 * @param a
@@ -60,7 +135,20 @@ public class Stage3 {
 	 * return false if either of array passed is null
 	 */
 	public static boolean same(int[] a, int[] b) {
-		return false; //to be completed
+		if (a == null || b == null ||a.length == 0 || b.length == 0)
+			return false;
+
+		int count = 0;
+		if(a.length == b.length) {
+			for(int i = 0; i<a.length; i++) {
+				if(containsTarget(a, b[i]) == true)
+					count++;
+			}
+		}
+		if (count == a.length) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
