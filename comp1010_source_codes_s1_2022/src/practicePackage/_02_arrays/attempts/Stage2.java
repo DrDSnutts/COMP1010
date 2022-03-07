@@ -518,7 +518,19 @@ public class Stage2 {
 	 * return false if array is null or target doesn't exist in the array starting at index startIndex.
 	 */
 	public static boolean containsFromIndex(int[] data, int target, int startIndex) {
-		return false; //to be completed
+		if(data == null || data.length == 0) {
+			return false;
+		}
+		
+		if(startIndex<0)
+			return false;
+		
+		for(int i = startIndex; i<data.length; i++) {
+			if (data[i] == target)
+				return true;
+		}
+		return false;
+		
 	}
 
 	/**
@@ -530,7 +542,18 @@ public class Stage2 {
 	 * return false if array is null or endIndex is invalid or target doesn't exist in the array up to index endIndex.
 	 */
 	public static boolean containsUptoIndex(int[] data, int target, int endIndex) {
-		return false; //to be completed
+		if(data == null || data.length == 0)
+			return false;
+		
+		if(data.length == 1) {
+			return true;
+		}
+		
+		for(int i = 0; i<endIndex; i++) {
+			if(data[i] == target)
+				return true;
+		}
+		return false;
 	}
 
 	/**
