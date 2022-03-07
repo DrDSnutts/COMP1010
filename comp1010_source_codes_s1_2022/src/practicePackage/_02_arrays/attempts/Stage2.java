@@ -549,7 +549,7 @@ public class Stage2 {
 			return true;
 		}
 		
-		for(int i = 0; i<endIndex; i++) {
+		for(int i = 0; i<endIndex+1; i++) {
 			if(data[i] == target)
 				return true;
 		}
@@ -567,7 +567,19 @@ public class Stage2 {
 
 	 */
 	public static boolean containsBetweenIndices(int[] data, int target, int startIndex, int endIndex) {
-		return false; //to be completed
+		if(data == null || data.length == 0) {
+			return false;
+		}
+		
+		if(data.length == 1) {
+			return true;
+		}
+		
+		for(int i = startIndex; i<endIndex+1; i++) {
+			if (data[i] == target)
+				return true;
+		}
+		return false;
 	}
 
 	/**
