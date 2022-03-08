@@ -258,23 +258,32 @@ public class IceCreamPrices {
 		for(int i = 0; i<iceCreamDetails.length; i++) {
 					companies[i] = iceCreamDetails[i][0];
 				}
-		int n = 0;
-		String[] temp = new String[n];
+			
 		
-		for(int i = 0; i<companies.length; i++) {
-			if(companies[i] != temp[i]) {
-				n++;
-				temp[i] = companies[i];
-			}
-		
-			if(companies[i] == temp[i]) {
-				
-			}
-		}
-		return temp;
+		return removeDuplicates(companies);
 		
 	}
 
+	public String[] removeDuplicates (String arr[]) {
+		int index = 0;
+		
+		for (int i = 0; i<arr.length; i++) {
+				if (arr[i] != arr[i+1]) {
+					index++;
+			}
+		}
+		
+		String[] str = new String [index];
+		
+		for (int i = 0; i<arr.length; i++) {
+			for (int j = 0; j<i; j++) {
+				if (arr[i] != arr[j]) {
+					str[i] = arr[i];
+				}
+			}
+		}
+		return str;
+	}
 	
 	
 	
