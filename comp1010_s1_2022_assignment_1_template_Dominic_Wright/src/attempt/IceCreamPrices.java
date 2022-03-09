@@ -253,43 +253,40 @@ public class IceCreamPrices {
 	 */	 	  			     		 		    		 	
 	public String[] getUniqueCompanies() {
 		String[] companies = new String [iceCreamDetails.length];
-		
+
 		//put all companies into an array
 		for(int i = 0; i<iceCreamDetails.length; i++) {
-					companies[i] = iceCreamDetails[i][0];
-				}
-			
-		
-		return removeDuplicates(companies);
-		
-	}
+			companies[i] = iceCreamDetails[i][0];
+		}
 
-	public String[] removeDuplicates (String arr[]) {
-		int index = 0;
-		
-		for (int i = 0; i<arr.length; i++) {
-				if (arr[i] != arr[i+1]) {
-					index++;
+		//compare index i to every other index
+		for(int i = 0; i<companies.length; i++) {
+			for(int j = i+1; j<companies.length; j++) {
+				//check if not null
+				if(companies[i] != null)
+					//if index i is the same as index j, index j = null
+					if(companies[i].equalsIgnoreCase(companies[j]))
+						companies[j] = null;
 			}
 		}
-		
-		String[] str = new String [index];
-		
-		for (int i = 0; i<arr.length; i++) {
-			for (int j = 0; j<i; j++) {
-				if (arr[i] != arr[j]) {
-					str[i] = arr[i];
-				}
+		// whenever companies is not null, n++
+		int n = 0;
+		for(int i = 0; i<companies.length; i++) {
+			if(companies[i] != null) {
+				n++;
 			}
 		}
-		return str;
+
+		String[] temp = new String[n];
+
+		int j = 0;
+		for(int i = 0; i<companies.length; i++) {
+			if(companies[i] != null) {
+				temp[j++] = companies[i];
+			}
+		}
+		return temp;
 	}
-	
-	
-	
-	
-	
-	
 
 	/**	 	  			     		 		    		 	
 	 * D/HD
