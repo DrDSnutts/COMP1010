@@ -276,9 +276,10 @@ public class IceCreamPrices {
 				n++;
 			}
 		}
-
+		//create a new string array with n amount of indexes
 		String[] temp = new String[n];
 
+		//whenever companies[i] is not null, add that index into new string Array
 		int j = 0;
 		for(int i = 0; i<companies.length; i++) {
 			if(companies[i] != null) {
