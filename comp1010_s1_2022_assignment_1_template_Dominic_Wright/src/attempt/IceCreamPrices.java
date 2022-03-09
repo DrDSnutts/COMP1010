@@ -7,6 +7,7 @@
 package attempt;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class IceCreamPrices {
 	public String[][] iceCreamDetails; // Company, name, Type
@@ -310,9 +311,44 @@ public class IceCreamPrices {
 	 *         company. The order of items in the returned arrays should be 
 	 *         the same as the order of the first occurrences of the companies.
 	 */	 	  			     		 		    		 	
-	public int[] uniqueIceCreamsCompany() {	 	  			     		 		    		 	
-		return null;
-	}	 	  			     		 		    		 	
+	public int[] uniqueIceCreamsCompany() {	 
+		
+		//array with correct number of indexes
+		int n = Index(getUniqueCompanies());	
+		int[] arr = new int [n];
+		
+		StringBuffer sb = new StringBuffer();
+		for(int i = 0; i<n; i++) {
+			sb.append(getUniqueCompanies()[i]);
+		}
+		String str = Arrays.toString(getUniqueCompanies());
+		
+		
+		int count = 0;
+		for(int i = 0; i<iceCreamDetails.length; i++) {
+			if(str.contains(iceCreamDetails[i][0])) {
+				for(int j = i+1; j<iceCreamDetails.length; j++) {
+					if(iceCreamDetails[i][1].equalsIgnoreCase(iceCreamDetails[j][1])) {
+						count++;
+					}
+				}
+			}
+		}
+		System.out.println(str);
+		System.out.println(count);
+		return arr;
+	}	 
+
+	//function to get indexes
+	public int Index (String[] arr) {
+		return arr.length;
+	}
+	
+	public String[] test() {
+		return getUniqueCompanies();
+	}
+
+
 
 	/**	 	  			     		 		    		 	
 	 * Bonus, not assessed
