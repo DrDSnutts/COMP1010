@@ -2,7 +2,7 @@ package practicePackage._03_classesObjects.attempts;
 
 public class CarTrip {
 	public double distance, time; //in kms and hours respectively
-	
+
 	/**
 	 * 
 	 * @param d: value meant for distance
@@ -12,13 +12,21 @@ public class CarTrip {
 	 * assign the higher of 0 and t into time
 	 */
 	public CarTrip(double d, double t) {
-		//to be completed
+		distance = d;
+		time = t;
+		
+		if(distance < 0) {
+			distance = 0;
+		}
+		if(time < 0) {
+			time = 0;
+		}
 	}
-	
+
 	public double averageSpeed() {
-		return 0; //to be completed
+		return distance/time;
 	}
-	
+
 	/**
 	 * return details in the format "distance kms travelled in time hours"
 	 * For example, if distance = 2.5, time = 1.2, return "2.5 kms travelled in 1.2 hours" 
@@ -26,7 +34,7 @@ public class CarTrip {
 	public String toString() {
 		return ""; //to be completed
 	}
-	
+
 	/**
 	 * 
 	 * @param other
