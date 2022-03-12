@@ -32,7 +32,7 @@ public class CarTrip {
 	 * For example, if distance = 2.5, time = 1.2, return "2.5 kms travelled in 1.2 hours" 
 	 */
 	public String toString() {
-		return ""; //to be completed
+		return distance + " kms travelled in " + time + " hours";
 	}
 
 	/**
@@ -43,6 +43,8 @@ public class CarTrip {
 	 * 0 if calling object distance is equal to parameter object distance
 	 */
 	public int compareTo(CarTrip other) {
-		return 0; //to be completed
+		return -1;
+			
+		
 	}
 }
