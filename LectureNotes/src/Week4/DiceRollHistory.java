@@ -12,7 +12,6 @@ public class DiceRollHistory {
 	public void roll(){
 		int val = (int)(Math.random()*6) + 1;
 		outcomes[nDiceRolled++] = val;
-	
 	}
 	
 	public String toString() {

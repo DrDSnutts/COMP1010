@@ -10,7 +10,7 @@ package practicePackage._03_classesObjects.attempts;
 public class Fraction {
 	public int num; //can be anything
 	public int den; //cannot be zero
- 
+
 	//DEFAULT CONSTRUCTOR
 	public Fraction() {
 		//DO NOT MODIFY!
@@ -60,7 +60,7 @@ public class Fraction {
 	public Fraction multiply(Fraction other) {
 		int n = this.num*other.num;
 		int d = this.den*other.den;
-		
+
 		Fraction Multiplication = new Fraction(n,d);
 		return Multiplication;
 	}
@@ -78,6 +78,18 @@ public class Fraction {
 	 * 
 	 */
 	public Fraction getSimplifiedForm() {
-		return null;
+		int gcd = 1;
+		
+		for(int i = 1; i<=den && i<=num; i++) {
+			if(den%i==0 && num%i==0) {
+				gcd = i;
+			}
+		}
+		
+		int newNum = num/gcd;
+		int newDen = den/gcd;
+
+		Fraction simplified = new Fraction(newNum, newDen);
+		return simplified;
 	}
 }
