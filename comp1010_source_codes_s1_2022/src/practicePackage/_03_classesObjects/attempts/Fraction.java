@@ -24,6 +24,11 @@ public class Fraction {
 	 * @param d: value for den (if d is 0, den should become 1)
 	 */
 	public Fraction(int n, int d) {
+		num = n;
+		den = d;
+		if (d == 0) {
+			den = 1;
+		}
 	}
 
 	/**
@@ -32,6 +37,12 @@ public class Fraction {
 	 * false otherwise (examples: 7/-3 or -12/25)
 	 */
 	public boolean isPositive() {
+		if(num >= 0 && den >= 0) {
+			return true;
+		}
+		if(num < 0 && den < 0) {
+			return true;
+		}
 		return false;
 	}
 
@@ -47,7 +58,11 @@ public class Fraction {
 	 * return object representing fraction -36/-14
 	 */
 	public Fraction multiply(Fraction other) {
-		return null;
+		int n = this.num*other.num;
+		int d = this.den*other.den;
+		
+		Fraction Multiplication = new Fraction(n,d);
+		return Multiplication;
 	}
 
 	/**

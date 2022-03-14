@@ -21,6 +21,19 @@ public class Job {
 	 * assign the higher of n and 1 into the instance variable numberOfHours.
 	 */
 	public Job(double h, double n) {
+		if(h > MIN_HOURLY_RATE) {
+			hourlyRate = h;
+		}
+		else {
+			hourlyRate = MIN_HOURLY_RATE;
+		}
+		if(n > 1) {
+			numberOfHours = n;
+		}
+		else {
+			numberOfHours = 1;
+		}
+		
 	}
 	
 	/**
@@ -32,7 +45,7 @@ public class Job {
 	 * return 183.75
 	 */
 	public double getSalary() {
-		return 0;
+		return hourlyRate*numberOfHours;
 	}
 
 	/**
@@ -44,6 +57,12 @@ public class Job {
 	 * 0 if calling object has the same salary than parameter object
 	 */
 	public int compareTo(Job other) {
+		if(this.hourlyRate*this.numberOfHours > other.hourlyRate*other.numberOfHours) {
+			return 1;
+		}
+		if(this.hourlyRate*this.numberOfHours < other.hourlyRate*other.numberOfHours) {
+			return -1;
+		}
 		return 0;
 	}
 }

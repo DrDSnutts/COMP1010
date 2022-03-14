@@ -43,7 +43,13 @@ public class CarTrip {
 	 * 0 if calling object distance is equal to parameter object distance
 	 */
 	public int compareTo(CarTrip other) {
-		return -1;
+		if (this.distance > other.distance) {
+			return 1;
+		}
+		if (this.distance < other.distance) {
+			return -1;
+		}
+		return 0;
 			
 		
 	}
