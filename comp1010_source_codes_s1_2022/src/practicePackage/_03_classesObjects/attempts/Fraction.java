@@ -78,18 +78,33 @@ public class Fraction {
 	 * 
 	 */
 	public Fraction getSimplifiedForm() {
-		int gcd = 1;
-		
-		for(int i = 1; i<=den && i<=num; i++) {
-			if(den%i==0 && num%i==0) {
-				gcd = i;
-			}
-		}
+		int gcd = GCD(num, den);
 		
 		int newNum = num/gcd;
 		int newDen = den/gcd;
+		
+		if(newNum < 0 && newDen < 0) {
+			newNum = -newNum;
+			newDen = -newDen;
+		}
 
 		Fraction simplified = new Fraction(newNum, newDen);
 		return simplified;
+	}
+
+
+	public int GCD(int num, int den) {
+		num = (num > 0) ? num : -num;
+		den = (den > 0) ? den : -den;
+		
+		while(num!=den) {
+			if(num > den){
+				num -= den;
+		}
+			else {
+				den -= num;
+			}
+		}
+		return num;
 	}
 }

@@ -20,6 +20,11 @@ public class LargeInteger {
 	 * LargeInteger.isNumeric(String to check)
 	 */
 	public void setValue(String v) {
+		this.value = v;
+		
+		if(!isNumeric(value)) {
+			this.value = "0";
+		}
 	}
 
 	/**
@@ -52,7 +57,12 @@ public class LargeInteger {
 	 * "-37": 2
 	 */
 	public int nDigits() {
-		return 0; 
+		String str = this.value;
+		if(str.charAt(0) == '-') {
+			return value.length()-1;
+		}
+		
+		return value.length();
 	}
 
 	/**
@@ -61,7 +71,10 @@ public class LargeInteger {
 	 * example: if value = "1729", return 9 (NOT '9'!!!)
 	 */
 	public int getLastDigit() {
-		return 0;
+		int lastIndex = value.length()-1;
+		char chr = this.value.charAt(lastIndex);
+		int digit = chr - '0';
+		return digit;
 	}
 
 	/**
@@ -70,7 +83,12 @@ public class LargeInteger {
 	 * example: if value = "1729", return 1 (NOT '1'!!!)
 	 */
 	public int getFirstDigit() {
-		return 0;
+		char chr = this.value.charAt(0);
+		if(chr == '-') {
+			chr = this.value.charAt(1);
+		}
+		int digit = chr - '0';
+		return digit;
 	}
 
 	/**

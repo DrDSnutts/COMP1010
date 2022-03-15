@@ -10,18 +10,35 @@ public class CoffeeTracker {
 	 * @param data (you may assume data.length > 0)
 	 */
 	public CoffeeTracker(int[] data) {
-		//to be completed
+		 this.coffeesPerDay = new int[data.length];	
+			for(int i = 0; i<data.length; i++) {
+				coffeesPerDay[i] = data[i];
+		}
 	}
 
 	public int coffeesConsumed() {
-		return 0; //to be completed
+		int sum = 0;
+		for(int i = 0; i<coffeesPerDay.length; i++) {
+			sum+=coffeesPerDay[i];
+		}
+		return sum;
 	}
 
 	public double averageCoffeesConsumed() {
-		return 0; //to be completed
+		double coffees = coffeesConsumed();
+		double days = coffeesPerDay.length;
+		
+		return coffees/days;
+		
 	}
 
 	public int coffeeFreeDays() {
-		return 0; //to be completed
+		int count = 0;
+		for(int i = 0; i<coffeesPerDay.length; i++) {
+			if(coffeesPerDay[i] == 0) {
+				count++;
+			}
+		}
+		return count;
 	}
 }

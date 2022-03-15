@@ -27,6 +27,21 @@ public class Time {
 	 * minute should become 59 if m is more than 59
 	 */
 	public Time(int h, int m) {
+		hour = h;
+		if(hour < 0) {
+			hour = 0;
+		}
+		if(hour > 23) {
+			hour = 23;
+		}
+		
+		minute = m;
+		if(minute < 0) {
+			minute = 0;
+		}
+		if(minute > 59) {
+			minute = 59;
+		}
 	}
 
 	/**
@@ -38,7 +53,17 @@ public class Time {
 	 * HINT 2: you can use DecimalFormat class
 	 */
 	public String toString() {
-		return null;
+		String hour = this.hour + "";
+		String minute = this.minute + "";
+		
+		if(this.hour<10) {
+			hour = "0"+hour;
+		}
+		if(this.minute<10) {
+			minute = "0"+minute;
+		}
+		
+		return hour + ":" + minute;
 	}
 
 	/**
@@ -47,9 +72,24 @@ public class Time {
 	 * 			-1 if calling object comes before parameter object
 	 * 			 0 if calling object and parameter object are the same
 	 */
-	public int compareTo(Time other) {
+	public int compareTo(Time other) {	
+		if(this.hour == other.hour && this.minute > other.minute) {
+			return 1;
+		}
+		
+		if(this.hour > other.hour) {
+			return 1;
+		}
+		
+		if(this.hour == other.hour && this.minute < other.minute) {
+			return -1;
+		}
+		if(this.hour < other.hour) {
+			return -1;
+		}
 		return 0;
 	}
+		
 	
 	/**
 	 * EXTRA... no test provided for this method
