@@ -100,7 +100,22 @@ public class Time {
 	 * HINT: use string concatenation:  "0" (String) + 5 (int) gives "05" (String)
 	 */
 	public String toStringAMPM() {
-		return null;
+		String minutes = this.minute + "";
+		String hours = this.hour + "";
+		String AMPM = " AM";
+
+		if(this.hour > 12) {
+			this.hour -= 12;
+			AMPM = " PM";
+		}
+		if(this.hour < 10) {
+			hours = "0"+  this.hour;
+		}
+		if(this.minute < 10) {
+			minutes = "0" + this.minute;
+		}		
+		return hours + ":" + minutes + AMPM;
+		
 	}
 	
 	/**

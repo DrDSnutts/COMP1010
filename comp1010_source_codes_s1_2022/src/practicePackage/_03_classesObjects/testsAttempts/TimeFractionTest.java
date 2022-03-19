@@ -127,7 +127,7 @@ public class TimeFractionTest {
 		time1 = new Time(12, 27);
 		time2 = new Time(17, 53);
 		assertNotNull(time1.shift(time2));
-		assertEquals(0, time1.shift(time2).compareTo(new Time(6, 20)));
+		assertEquals("06:20", time1.shift(time2).compareTo(new Time(6,20)));
 	}
 
 	@Test
