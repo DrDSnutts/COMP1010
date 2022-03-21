@@ -23,6 +23,18 @@ public class Box {
 	 * @param w (for width)
 	 */
 	public Box(int d, int h, int w) {
+		if( d < 1) {
+			d = 1;
+		}
+		if( h < 1) {
+			h = 1;
+		}
+		if(w < 1) {
+			w = 1;
+		}
+		depth = d;
+		height = h;
+		width = w;
 	}
 
 	/**
@@ -30,6 +42,9 @@ public class Box {
 	 * @param original
 	 */
 	public Box(Box original) {
+		this.depth = original.depth;
+		this.height = original.height;
+		this.width = original.width;
 	}
 
 	/**
@@ -38,7 +53,8 @@ public class Box {
 	 * "3 x 2 x 5"
 	 */
 	public String toString() {
-		return "";
+		String str = depth + " x " + height + " x " + width;
+		return str;
 	}
 
 	/**
@@ -46,7 +62,7 @@ public class Box {
 	 * @return the volume of the box
 	 */
 	public int volume() {
-		return 0;
+		return depth*height*width;
 	}
 	
 	/**
@@ -54,7 +70,13 @@ public class Box {
 	 * @return the longest side of the box
 	 */
 	public int longestSide() {
-		return 0;
+		if(width > height && width > depth) {
+			return width;
+		}
+		if(depth > width && depth > height) {
+			return depth;
+		}
+		return height;
 	}
 
 	/**
@@ -62,7 +84,7 @@ public class Box {
 	 * @return area of the base (or the top)
 	 */
 	public int baseArea() {
-		return 0;
+		return depth*width;
 	}
 
 	/**
@@ -70,7 +92,7 @@ public class Box {
 	 * @return area of the front (or the back face)
 	 */
 	public int frontArea() {
-		return 0;
+		return height*width;
 	}
 
 	/**
@@ -78,7 +100,7 @@ public class Box {
 	 * @return area of the left (or right) face
 	 */
 	public int sideArea() {
-		return 0;
+		return height*depth;
 	}
 
 	/**
@@ -86,7 +108,7 @@ public class Box {
 	 * @return the surface area of the box
 	 */
 	public int surfaceArea() {
-		return 0; 
+		return (sideArea() + frontArea() + baseArea())*2; 
 	}
 
 	/**
@@ -94,7 +116,13 @@ public class Box {
 	 * @return the area of the largest surface (base/front/side)
 	 */
 	public int largestFaceArea() {
-		return 0;
+		if(sideArea() > frontArea() && sideArea() > baseArea()) {
+			return sideArea();
+		}
+		if(frontArea() > sideArea() && frontArea() > baseArea()) {
+			return frontArea();
+		}
+		return baseArea();
 	}
 
 	/**
@@ -107,6 +135,12 @@ public class Box {
 	 *
 	 */
 	public int compareTo(Box other) { //volume -> surface area
+		if(volume() > surfaceArea()) {
+			return 1;
+		}
+		if(volume() < surfaceArea()) {
+			return -1;
+		}
 		return 0;
 	}
 
