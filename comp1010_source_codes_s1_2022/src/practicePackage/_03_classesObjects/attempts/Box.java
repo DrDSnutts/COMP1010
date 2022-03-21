@@ -135,10 +135,10 @@ public class Box {
 	 *
 	 */
 	public int compareTo(Box other) { //volume -> surface area
-		if(volume() > surfaceArea()) {
+		if(this.volume() > other.volume() || this.surfaceArea() > other.surfaceArea()) {
 			return 1;
 		}
-		if(volume() < surfaceArea()) {
+		if(this.volume() < other.volume() || this.surfaceArea() < other.surfaceArea()) {
 			return -1;
 		}
 		return 0;
@@ -152,7 +152,10 @@ public class Box {
 	 * Note that a box cannot fit inside the box of the same dimension.
 	 */
 	public boolean canFitInside(Box b) {
-		return true;
+		if(this.depth < b.depth && this.height < b.height && this.width < b.width || this.volume() < b.volume()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
