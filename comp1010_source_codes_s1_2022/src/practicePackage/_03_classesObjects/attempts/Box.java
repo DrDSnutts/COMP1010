@@ -152,10 +152,30 @@ public class Box {
 	 * Note that a box cannot fit inside the box of the same dimension.
 	 */
 	public boolean canFitInside(Box b) {
-		if(this.depth < b.depth && this.height < b.height && this.width < b.width || this.volume() < b.volume()) {
+		if(this.depth < b.depth && this.height < b.height && this.width < b.width) {
 			return true;
 		}
+		double dia = pythag(this.height, this.depth);
+		double diab = pythag(b.height, b.depth);
+		
+		if(dia < diab && this.width < b.width) {
+			return true;
+		}
+		//box b = 5.385
 		return false;
+	}
+	
+	public double pythag(int a, int b) {
+		double t;
+		double c = a*a + b*b;
+		double sqrt = c/2;
+		do {
+			t = sqrt;
+			sqrt = (t+(c/t))/2;
+		}
+		while ((t-sqrt) != 0);
+			return sqrt;
+		
 	}
 
 	/**
