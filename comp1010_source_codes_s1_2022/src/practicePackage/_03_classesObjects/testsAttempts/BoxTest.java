@@ -13,7 +13,7 @@ class BoxTest {
 	@BeforeEach
 	void run() {
 		a = new Box(1,1,1);
-		b = new Box(3,2,5);
+		b = new Box(3,2,5); //5,2,3
 		c = new Box(2,9,9);
 		d = new Box(18,3,3);
 		e = new Box(1,18,9);

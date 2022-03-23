@@ -155,22 +155,14 @@ public class Box {
 		if(this.depth < b.depth && this.height < b.height && this.width < b.width) {
 			return true;
 		}
-		
+		if(this.depth < b.width && this.height < b.depth && this.width < b.height) {
+			return true;
+		}
+		if(this.depth < b.height && this.height < b.width && this.width < b.depth) {
+			return true;
+		}
 		//box b = 5.385
 		return false;
-	}
-	
-	public double pythag(int a, int b) {
-		double t;
-		double c = a*a + b*b;
-		double sqrt = c/2;
-		do {
-			t = sqrt;
-			sqrt = (t+(c/t))/2;
-		}
-		while ((t-sqrt) != 0);
-			return sqrt;
-		
 	}
 
 	/**
@@ -181,7 +173,17 @@ public class Box {
 	 * so 3 x 2 x 5 and 5 x 2 x 3 are identical. 
 	 */
 	public boolean isIdenticalTo(Box other) {
-		return true;	
+		if(this.depth == other.depth && this.height == other.height && this.width == other.width) {
+			return true;
+		}
+		if(this.depth == other.width && this.height == other.depth && this.width == other.height) {
+			return true;
+		}
+		if(this.depth == other.height && this.height == other.width && this.width == other.depth) {
+			return true;
+		}
+		//box b = 5.385
+		return false;
 	}
 	
 	/**
