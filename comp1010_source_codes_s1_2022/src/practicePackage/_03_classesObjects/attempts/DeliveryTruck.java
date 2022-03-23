@@ -1,4 +1,4 @@
-package practicePackage._03_classesObjects.attempts;
+ package practicePackage._03_classesObjects.attempts;
 
 public class DeliveryTruck {
 	public Box[] boxes;
@@ -23,10 +23,20 @@ public class DeliveryTruck {
 	 * Cube that checks if the calling object is a Cube or not.
 	 */
 	public int countCubes() {
+		int count = 0;
 		for(int i = 0; i<boxes.length; i++) {
-			//if(Box.i.depth == i.height )
+			if(isCube(boxes[i])) {
+				count++;
+			}
 		}
-		return 0;
+		return count;
+	}
+	
+	public boolean isCube(Box box) {
+		if(box.width == box.height && box.width == box.depth) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -34,8 +44,13 @@ public class DeliveryTruck {
 	 * @return total volume of all the boxes
 	 */
 	public int totalVolume() {
-		return 0;
+		int sumVolume = 0;
+		for(int i = 0; i<boxes.length; i++) {
+			sumVolume += boxes[i].volume();
+		}
+		return sumVolume;
 	}
+	
 	
 	/**
 	 * P
@@ -43,6 +58,11 @@ public class DeliveryTruck {
 	 * @return true if the truck contains any box with given volume, false otherwise
 	 */
 	public boolean contains(int vol) {
+		for(int i = 0; i<boxes.length; i++) {
+			if(boxes[i].volume() == vol) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
@@ -53,6 +73,12 @@ public class DeliveryTruck {
 	 * return null if none of the boxes have the given volume
 	 */
 	public Box getWithVolume(int vol) {
+		for(int i = 0; i<boxes.length; i++) {
+			if(boxes[i].volume() == vol) {
+				Box copy = new Box(boxes[i].depth, boxes[i].height, boxes[i].width);
+				return copy;
+			}
+		}
 		return null;
 	}
 	
