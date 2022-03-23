@@ -155,12 +155,7 @@ public class Box {
 		if(this.depth < b.depth && this.height < b.height && this.width < b.width) {
 			return true;
 		}
-		double dia = pythag(this.height, this.depth);
-		double diab = pythag(b.height, b.depth);
 		
-		if(dia < diab && this.width < b.width) {
-			return true;
-		}
 		//box b = 5.385
 		return false;
 	}

@@ -92,6 +92,13 @@ public class DeliveryTruck {
 	 * same for boxes[1], boxes[2] ... boxes[boxes.length-1] (all items before adding b)
 	 */
 	public void add(Box b) {
+		Box[] newBoxes = new Box[boxes.length+1];
+		for(int i = 0; i<boxes.length; i++) {
+			newBoxes[i] = boxes[i];
+		}
+		Box boxCopy = new Box (b.depth, b.height, b.width);
+		newBoxes[newBoxes.length - 1] = boxCopy;
+		boxes = newBoxes;
 	}
 
 	/**
