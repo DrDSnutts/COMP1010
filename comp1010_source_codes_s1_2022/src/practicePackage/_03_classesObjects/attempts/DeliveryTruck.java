@@ -23,6 +23,9 @@ public class DeliveryTruck {
 	 * Cube that checks if the calling object is a Cube or not.
 	 */
 	public int countCubes() {
+		for(int i = 0; i<boxes.length; i++) {
+			//if(Box.i.depth == i.height )
+		}
 		return 0;
 	}
 	
