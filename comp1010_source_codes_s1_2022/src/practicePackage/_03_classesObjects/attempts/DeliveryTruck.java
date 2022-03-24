@@ -113,6 +113,15 @@ public class DeliveryTruck {
 	 * so return 6 (4+2)
 	 */
 	public int countIdenticalBoxes() {
-		return 0;
+		int count = 0;
+		
+		for (int i = 0; i<boxes.length; i++) {
+			for(int j = i+1; j<boxes.length; j++) {
+				if (boxes[i].isIdenticalTo(boxes[j])) {
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 }
