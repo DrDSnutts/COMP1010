@@ -64,7 +64,7 @@ public class Box {
 	public int volume() {
 		return depth*height*width;
 	}
-	
+
 	/**
 	 * 
 	 * @return the longest side of the box
@@ -201,7 +201,7 @@ public class Box {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * HD
 	 * @param other
@@ -211,6 +211,33 @@ public class Box {
 	 * comparison criteria: volume -> surface area -> longest sides -> second longest sides -> shortest side
 	 */
 	public int compareToAdvanced(Box other) { 
+		if(this.volume() > other.volume() || this.surfaceArea() > other.surfaceArea() || this.shortestSide() > other.shortestSide() || this.secondLongestSide() > other.secondLongestSide()) {
+			return 1;
+		}
+		if(this.volume() < other.volume() || this.surfaceArea() < other.surfaceArea() || this.shortestSide() < other.shortestSide() || this.secondLongestSide() < other.secondLongestSide()) {
+			return -1;
+		}
 		return 0;
+	}
+	
+
+	public int shortestSide() {
+		if(width < height && width < depth) {
+			return width;
+		}
+		if(depth < width && depth < height) {
+			return depth;
+		}
+		return height;
+	}
+
+	public int secondLongestSide() {
+		if(width > height && width < depth) {
+			return width;
+		}
+		if(depth > width && depth < height) {
+			return depth;
+		}
+		return height;
 	}
 }
