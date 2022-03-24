@@ -173,16 +173,7 @@ public class Box {
 	 * so 3 x 2 x 5 and 5 x 2 x 3 are identical. 
 	 */
 	public boolean isIdenticalTo(Box other) {
-		if(this.depth == other.depth && this.height == other.height && this.width == other.width) {
-			return true;
-		}
-		if(this.depth == other.width && this.height == other.depth && this.width == other.height) {
-			return true;
-		}
-		if(this.depth == other.height && this.height == other.width && this.width == other.depth) {
-			return true;
-		}
-		//box b = 5.385
+		
 		return false;
 	}
 	
