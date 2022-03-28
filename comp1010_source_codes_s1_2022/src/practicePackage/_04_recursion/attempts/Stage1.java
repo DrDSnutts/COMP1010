@@ -8,7 +8,10 @@ public class Stage1 {
 	 * return 0 if n is less than or equal to 0
 	 */
 	public static int sum(int n) {
-		return 0; //to be completed
+		if(n<=0) {
+			return 0;
+		}
+		return sum(n-1) + n;
 	}
 
 	/**
@@ -19,7 +22,10 @@ public class Stage1 {
 	 * return 0 if start is more than stop
 	 */
 	public static int sumRange(int start, int stop) {
-		return 0; //to be completed
+		if(start > stop) {
+			return 0;
+		}
+		return sumRange(start+1,stop) + start;
 	}
 
 	/**
@@ -29,7 +35,11 @@ public class Stage1 {
 	 * return 1 if n is less than or equal to 0
 	 */
 	public static int product(int n) {
-		return 1; //to be completed
+		if(n <= 0) {
+			return 1;
+		}
+		
+		return product(n-1)*n;
 	}
 
 	/**
@@ -40,7 +50,10 @@ public class Stage1 {
 	 * return 0 if n is less than or equal to 0
 	 */
 	public static int sumSquares(int n) {
-		return 0; //to be completed
+		if(n <= 0) {
+			return 0;
+		}
+		return sumSquares(n-1)+n*n;
 	}
 
 	/**
@@ -56,7 +69,14 @@ public class Stage1 {
 	 * HINT: if the number is odd, ignore it and return sumEven(n-1)
 	 */
 	public static int sumEven(int n) {
-		return 0; //to be completed
+		if(n <= 1) {
+			return 0;
+		}
+		if(n%2 != 0) {
+			return sumEven(n-1);
+		}
+		return sumEven(n-1)+n;
+		
 	}
 
 	/**
@@ -72,7 +92,13 @@ public class Stage1 {
 	 * HINT: if the number is even, ignore it and return sumOdd(n-1)
 	 */
 	public static int sumOdd(int n) {
-		return 0; //to be completed
+		if(n <= 0) {
+			return 0;
+		}
+		if(n%2 == 0) {
+			return sumOdd(n-1);
+		}
+		return sumOdd(n-1)+n;
 	}
 
 	/**
@@ -88,7 +114,13 @@ public class Stage1 {
 	 * HINT: If n is odd, ignore it and return sumEvenSquares(n-1)
 	 */
 	public static int sumEvenSquares(int n) {
-		return 0; //to be completed
+		if(n<=0) {
+			return 0;
+		}
+		if(n%2 != 0) {
+			return sumEvenSquares(n-1);
+		}
+		return sumEvenSquares(n-1)+n*n;
 	}
 
 	/**
@@ -104,7 +136,13 @@ public class Stage1 {
 	 * HINT: If n is even, ignore it and return sumOddSquares(n-1)
 	 */
 	public static int sumOddSquares(int n) {
-		return 0; //to be completed
+		if(n <= 0) {
+			return 0;
+		}
+		if(n%2 == 0) {
+			return sumOddSquares(n-1);
+		}
+		return sumOddSquares(n-1)+n*n;
 	}
 
 	/**
@@ -116,7 +154,13 @@ public class Stage1 {
 	 * HINT: you can check that a char ch is a digit using Character.isDigit(ch)
 	 */
 	public static boolean containsDigit(String str) {
-		return false; //to be completed
+		if(str == null || str.isEmpty()) {
+			return false;
+		}
+		if(Character.isDigit(str.charAt(0))){
+			return true;
+		}
+		return containsDigit(str.substring(1));
 	}
 
 	/**
@@ -131,7 +175,16 @@ public class Stage1 {
 	 * HINT: you can check that a char ch is a digit using Character.isDigit(ch)
 	 */
 	public static boolean isNumeric(String str) {
-		return false; //to be completed
+		if(str == null) {
+			return false;
+		}
+		if(str.isEmpty()) {
+			return true;
+		}
+		if(Character.isDigit(str.charAt(0))) {
+			return isNumeric(str.substring(1));
+		}
+		return false;
 	}
 
 	/**
@@ -143,7 +196,13 @@ public class Stage1 {
 	 * IMPORTANT: You may not call the methods indexOf or lastIndexOf or contains from String class
 	 */
 	public static boolean contains(String str, char target) {
-		return false; //to be completed
+		if(str == null || str.isEmpty()) {
+			return false;
+		}
+		if(str.charAt(0) == target) {
+			return true;
+		}
+		return contains(str.substring(1), target);
 	}
 
 	/**
@@ -155,7 +214,13 @@ public class Stage1 {
 	 * IMPORTANT: You may not call the methods indexOf or lastIndexOf or contains from String class
 	 */
 	public static boolean contains(String str, String target) {
-		return false; //to be completed
+		if(str == null || str.isEmpty() || target == null) {
+			return false;
+		}
+		if(str.substring(0, target.length()) == target) {
+			return true;
+		}
+		return contains(str.substring(1), target);
 	}
 
 	/**
