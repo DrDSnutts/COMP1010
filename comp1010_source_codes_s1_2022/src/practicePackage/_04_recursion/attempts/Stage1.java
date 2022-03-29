@@ -221,6 +221,8 @@ public class Stage1 {
 			return true;
 		}
 		return contains(str.substring(1), target);
+		
+		//test
 	}
 
 	/**
