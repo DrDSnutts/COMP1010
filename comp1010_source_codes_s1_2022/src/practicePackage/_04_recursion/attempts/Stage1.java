@@ -202,7 +202,7 @@ public class Stage1 {
 		if(str.charAt(0) == target) {
 			return true;
 		}
-		return contains(str.substring(1), target);
+		return contains(str.substring(1), target); //testing
 	}
 
 	/**
