@@ -16,7 +16,10 @@ public class Stage2 {
 	 */
 	public static int countDigits(int n) {
 		n = Math.abs(n); //first step is to make it positive
-		return 0; //to be completed
+		if(n <= 0) {
+			return 0;
+		}
+		return 1+countDigits(n/10);
 	}
 
 	/**
@@ -25,7 +28,14 @@ public class Stage2 {
 	 * @return the sum of the even digits in n
 	 */
 	public static int sumEvenDigits(int n) {
-		return 0; //to be completed
+		n = Math.abs(n);
+		if(n <= 0) {
+			return 0;
+		}
+		if(n%2 == 0) {
+			return n%10+sumEvenDigits(n/10);
+		}
+		return sumEvenDigits(n/10);
 	}
 
 
@@ -36,7 +46,14 @@ public class Stage2 {
 	 * @return the sum of the digits in n that are more than d
 	 */
 	public static int sumDigitsOver(int n, int d) {
-		return 0; //to be completed
+		n = Math.abs(n);
+		if(n <= 0) {
+			return 0;
+		}
+		if(n%10 > d) {
+			return n%10+sumDigitsOver(n/10, d);
+		}
+		return sumDigitsOver(n/10, d);
 	}
 
 	/**
@@ -53,16 +70,30 @@ public class Stage2 {
 	 * countDigit(0, 0) = 0 (NOT 1)
 	 */
 	public static int countDigit(int n, int d) {
-		return 0; //to be completed
+		n = Math.abs(n);
+		if(n <= 0) {
+			return 0;
+		}
+		if(d <= n%10) {
+			return 1+sumDigitsOver(n/10, d);
+		}
+		return sumDigitsOver(n/10, d);
 	}
-	
+
 	/**
 	 * 
 	 * @param n
 	 * @return the first digit of n (0 if n is 0)
 	 */
 	public static int firstDigit(int n) {
-		return 0; //to be completed
+		n = Math.abs(n);
+		if(n <= 0) {
+			return 0;
+		}
+		if (n > 10) {
+			return firstDigit(n/10);
+		}
+		return n%10;
 	}
 
 	/**
@@ -75,7 +106,10 @@ public class Stage2 {
 	 * HINT: multiplication is repeated addition
 	 */
 	public static int product(int a, int b) {
-		return 0; //to be completed
+		if(a <= 0) {
+			return 0;
+		}
+		return b+product(a-1, b);
 	}
 
 	/**
@@ -93,7 +127,10 @@ public class Stage2 {
 	 * fibonacci(8) = 21
 	 */
 	public static int fibonacci(int n) {
-		return 0; //to be completed
+		if (n > 1) {
+			return fibonacci(n-1) + fibonacci(n-2);
+		}
+		return n;
 	}
 
 	/**
@@ -114,7 +151,15 @@ public class Stage2 {
 	 * tribonacci(7) = 13
 	 */
 	public static int tribonacci(int n) {
-		return 0; //to be completed
+		if(n == 0 || n == 1) {
+			return 0;
+		}
+		if(n == 2) {
+			return 1;
+		}
+		else {
+			return tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3);
+		}
 	}
 
 	/**
@@ -126,18 +171,23 @@ public class Stage2 {
 	public static int combinations(int n, int k) {
 		return 0;
 	}
-	
+
 	//following functions might benefit from tail recursion
-	
+
 	/**
 	 * 
 	 * @param n
 	 * @return the smallest digit in the value passed
 	 */
-	public static int smallestDigit(int n) {
+	public static int smallestDigit(int n) {	
+		if(n <= 0) {
+			return 0;
+		}
+		
 		return 0;
+		
 	}
-	
+
 	/**
 	 * 
 	 * @param n
@@ -146,7 +196,7 @@ public class Stage2 {
 	public static int highestDigit(int n) {
 		return 0;
 	}
-	
+
 	/**
 	 * 
 	 * @param n
@@ -156,7 +206,7 @@ public class Stage2 {
 	public static int smallestEvenDigit(int n) {
 		return 0;	
 	}
-	
+
 	/**
 	 * 
 	 * @param n
@@ -166,7 +216,7 @@ public class Stage2 {
 	public static int highestEvenDigit(int n) {
 		return 0;	
 	}
-	
+
 	/**
 	 * 
 	 * @param n
@@ -178,7 +228,7 @@ public class Stage2 {
 	public static int highestEvenDigitLocation(int n) {
 		return 0;
 	}
-	
+
 	/**
 	 * 
 	 * @param n
@@ -190,7 +240,7 @@ public class Stage2 {
 	public static int highestDigitLocation(int n) {
 		return 0;
 	}
-	
+
 	/**
 	 * 
 	 * @param n

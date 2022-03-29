@@ -214,6 +214,12 @@ public class Stage1 {
 	 * IMPORTANT: You may not call the methods indexOf or lastIndexOf or contains from String class
 	 */
 	public static boolean contains(String str, String target) {
+		if(str == null || str.isEmpty() || target == null) {
+			return false;
+		}
+		if(str.contains(target)) {
+			return true;
+		}
 		return false;
 	}
 
