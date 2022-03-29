@@ -38,7 +38,7 @@ public class Stage1 {
 		if(n <= 0) {
 			return 1;
 		}
-		
+
 		return product(n-1)*n;
 	}
 
@@ -76,7 +76,7 @@ public class Stage1 {
 			return sumEven(n-1);
 		}
 		return sumEven(n-1)+n;
-		
+
 	}
 
 	/**
@@ -214,15 +214,7 @@ public class Stage1 {
 	 * IMPORTANT: You may not call the methods indexOf or lastIndexOf or contains from String class
 	 */
 	public static boolean contains(String str, String target) {
-		if(str == null || str.isEmpty() || target == null) {
-			return false;
-		}
-		if(str.substring(0, target.length()) == target) {
-			return true;
-		}
-		return contains(str.substring(1), target);
-		
-		//test
+		return false;
 	}
 
 	/**
@@ -233,6 +225,10 @@ public class Stage1 {
 	 * IMPORTANT: for any integer x, x to the power of 0 is 1 
 	 */
 	public static int power(int x, int n) {
-		return 0; //to be completed
+		if(n == 0) {
+			return 1;
+		}
+		return (x*power(x,n-1));
+
 	}
 }
