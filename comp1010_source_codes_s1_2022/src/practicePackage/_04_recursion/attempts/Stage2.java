@@ -187,7 +187,6 @@ public class Stage2 {
 		int remainder = n%10;
 		int other = n/10;
 		if (remainder > other%10) {
-			remainder = other;
 			return smallestDigit(n/10);
 		}
 		return remainder;
