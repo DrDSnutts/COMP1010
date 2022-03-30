@@ -179,12 +179,18 @@ public class Stage2 {
 	 * @param n
 	 * @return the smallest digit in the value passed
 	 */
-	public static int smallestDigit(int n) {	
+	public static int smallestDigit(int n) {
+		n = Math.abs(n);
 		if(n <= 0) {
 			return 0;
 		}
-		
-		return 0;
+		int remainder = n%10;
+		int other = n/10;
+		if (remainder > other%10) {
+			remainder = other;
+			return smallestDigit(n/10);
+		}
+		return remainder;
 		
 	}
 
