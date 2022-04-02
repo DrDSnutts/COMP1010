@@ -191,7 +191,7 @@ public class Stage2 {
 			return n % 10;
 		}
 		return smallestDigit(n/10);
-		
+
 	}
 
 	/**
@@ -227,12 +227,12 @@ public class Stage2 {
 		if(n/10 == 0) {
 			return n;
 		}
-		if((n%10)%2 == 0) { 
-			if ((n % 10)<(smallestEvenDigit(n/10))) {
+		if(n%2 == 0) {
+		if ((n % 10)<(smallestEvenDigit(n/10))) {
 				return n % 10;
-			}
 		}
-		else {
+		}
+		else if (n%2 != 0) {
 			return smallestEvenDigit(n/10);
 		}
 		return 0;
