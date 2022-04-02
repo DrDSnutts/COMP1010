@@ -181,15 +181,16 @@ public class Stage2 {
 	 */
 	public static int smallestDigit(int n) {
 		n = Math.abs(n);
-		if(n <= 0) {
+		if(n == 0) {
 			return 0;
 		}
-		int remainder = n%10;
-		int other = n/10;
-		if (remainder > other%10) {
-			return smallestDigit(n/10);
+		if(n/10 == 0) {
+			return n;
 		}
-		return remainder;
+		if ((n % 10)<(smallestDigit(n/10))) {
+			return n % 10;
+		}
+		return smallestDigit(n/10);
 		
 	}
 
@@ -199,7 +200,17 @@ public class Stage2 {
 	 * @return the highest digit in the value passed
 	 */
 	public static int highestDigit(int n) {
-		return 0;
+		n = Math.abs(n);
+		if(n == 0) {
+			return 0;
+		}
+		if(n/10 == 0) {
+			return n;
+		}
+		if ((n % 10)>(highestDigit(n/10))) {
+			return n % 10;
+		}
+		return highestDigit(n/10);
 	}
 
 	/**
@@ -209,7 +220,22 @@ public class Stage2 {
 	 * return 0 if the number doesn't have any even digits
 	 */
 	public static int smallestEvenDigit(int n) {
-		return 0;	
+		n = Math.abs(n);
+		if(n == 0) {
+			return 0;
+		}
+		if(n/10 == 0) {
+			return n;
+		}
+		if((n%10)%2 == 0) { 
+			if ((n % 10)<(smallestEvenDigit(n/10))) {
+				return n % 10;
+			}
+		}
+		else {
+			return smallestEvenDigit(n/10);
+		}
+		return 0;
 	}
 
 	/**
