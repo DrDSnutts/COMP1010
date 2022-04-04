@@ -27,6 +27,17 @@ public class MyArrayList {
 		System.out.println("myList: " +myList);
 		
 		System.out.println("How many 30: " + count(myList, 30));
+		
+		int total = 0;
+		int count = 0;
+		for (Integer item : myList) {
+			total += item;
+			count++;
+		}
+		System.out.println("Total: " + total);
+		System.out.println("Count: " + count);
+
+		
 	}
 	
 	public static int count(ArrayList<Integer> list, int key) {

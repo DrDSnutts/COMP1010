@@ -8,7 +8,15 @@ public class Stage3 {
 	 * return null if string is null
 	 */
 	public static String reverse(String str) {
-		return null; //to be completed
+		if(str == null) {
+			return null;
+		}
+		if(str.isEmpty()) {
+			return "";
+		}
+		return reverse(str.substring(1)) + str.charAt(0);
+		
+		
 	}
 	
 	/**
@@ -19,7 +27,11 @@ public class Stage3 {
 	 * note: the least significant digit is at location 1, the secon-least significant digit is at location 2, and so on.
 	 */
 	public static int removeDigit(int n, int loc) {
-		return 0; //to be completed
+		if(loc<=0) {
+			return n;
+		}
+		
+		return removeDigit(n/10,loc-1);
 	}
 
 	/**
@@ -31,7 +43,10 @@ public class Stage3 {
 	 * return false if Sting is null
 	 */
 	public static boolean isPalindrome(String str) {
-		return false; //to be completed
+		if(str == null) {
+			return false;
+		}
+		return str.equalsIgnoreCase(reverse(str));
 	}
 
 	/**
@@ -53,8 +68,18 @@ public class Stage3 {
 	 *  HINT 2: you can call power from Stage1
 	 */
 	public static double powerV2(int x, int n) {
-		return 0; //to be completed
+		if(n == 0) {
+			return 1;
+		}
+		if(n<0) {
+			if(n>=0) {
+			return 0;
+		}
+			return 1/(x*powerV2(x,n+1));
+		}
+		return (x*powerV2(x,n-1));
 	}
+	
 
 	/**
 	 * 
