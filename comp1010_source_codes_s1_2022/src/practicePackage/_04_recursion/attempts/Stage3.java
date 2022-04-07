@@ -27,11 +27,28 @@ public class Stage3 {
 	 * note: the least significant digit is at location 1, the secon-least significant digit is at location 2, and so on.
 	 */
 	public static int removeDigit(int n, int loc) {
-		if(loc<=0) {
+		int num = numDigits(n);
+		
+		if(n >= 0 && loc <= 0) {
 			return n;
 		}
+		if(loc==0 || loc > num) {
+			return n;
+		}
+		if(loc==1) {
+			return n/10;
+		}
+		return removeDigit(n/10,loc-1)*10+n%10;
 		
-		return removeDigit(n/10,loc-1);
+	}
+	
+	public static int numDigits(int n) {
+		int count = 0;
+		while(n!=0) {
+			n/=10;
+			count++;
+		}
+		return count;
 	}
 
 	/**
@@ -75,9 +92,10 @@ public class Stage3 {
 			if(n>=0) {
 			return 0;
 		}
-			return 1/(x*powerV2(x,n+1));
+			return 1/powerV2(x,-n);	
 		}
 		return (x*powerV2(x,n-1));
+		
 	}
 	
 
@@ -88,6 +106,22 @@ public class Stage3 {
 	 * @return true if the first digits of a and b are the same, false otherwise
 	 */
 	public static boolean sameFirstDigit(int a, int b) {
+		int a2 = Math.abs(a);
+		int b2 = Math.abs(b);
+		int aDigits = numDigits(a);
+		int bDigits = numDigits(b);
+		int aFirstDigit = a2/(10*(aDigits-1));
+		int bFirstDigit = b2/(10*(bDigits-1));
+		
+		if(a2 == b2) {
+			return true;
+		}
+		
+		if(aFirstDigit == bFirstDigit) {
+			return true;
+		}
+		
+		
 		return false;
 	}
 
