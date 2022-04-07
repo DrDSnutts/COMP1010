@@ -110,8 +110,8 @@ public class Stage3 {
 		int b2 = Math.abs(b);
 		int aDigits = numDigits(a);
 		int bDigits = numDigits(b);
-		int aFirstDigit = a2/(10*(aDigits-1));
-		int bFirstDigit = b2/(10*(bDigits-1));
+		int aFirstDigit = a2/10*(aDigits-1);
+		int bFirstDigit = b2/10*(bDigits-1);
 		
 		if(a2 == b2) {
 			return true;
