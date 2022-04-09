@@ -225,17 +225,21 @@ public class Stage2 {
 			return 0;
 		}
 		if(n/10 == 0) {
-			return n;
+			return 0;
 		}
+		if(isEven(n%10) == true) {
+			if(n%10<smallestEvenDigit(n/10)){
+				return n%10;
+			}
+		}
+		return smallestEvenDigit(n/10);
+	}
+	
+	public static boolean isEven(int n) {
 		if(n%2 == 0) {
-		if ((n % 10)<(smallestEvenDigit(n/10))) {
-				return n % 10;
+			return true;
 		}
-		}
-		else if (n%2 != 0) {
-			return smallestEvenDigit(n/10);
-		}
-		return 0;
+		return false;
 	}
 
 	/**
@@ -245,7 +249,19 @@ public class Stage2 {
 	 * return 0 if the number doesn't have any even digits
 	 */
 	public static int highestEvenDigit(int n) {
-		return 0;	
+		n = Math.abs(n);
+		if(n == 0 || n/10 == 0) {
+			return 0;
+		}
+		
+		if(isEven(n%10) == true) {	
+			int highest = n%10;
+			if(highest>highestEvenDigit(n/10)){
+				return n%10;
+			}
+			
+		}
+		return highestEvenDigit(n/10);
 	}
 
 	/**

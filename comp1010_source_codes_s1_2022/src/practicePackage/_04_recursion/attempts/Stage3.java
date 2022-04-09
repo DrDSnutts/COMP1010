@@ -108,10 +108,12 @@ public class Stage3 {
 	public static boolean sameFirstDigit(int a, int b) {
 		int a2 = Math.abs(a);
 		int b2 = Math.abs(b);
-		int aDigits = numDigits(a);
-		int bDigits = numDigits(b);
+		int aDigits = numDigits(a2);
+		int bDigits = numDigits(b2);
 		int aFirstDigit = a2/10*(aDigits-1);
 		int bFirstDigit = b2/10*(bDigits-1);
+		
+		
 		
 		if(a2 == b2) {
 			return true;
