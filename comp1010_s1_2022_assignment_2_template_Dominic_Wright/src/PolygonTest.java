@@ -319,7 +319,7 @@ public class PolygonTest {
 		assertFalse(pentagon.inSingleQuadrant());
 		
 		pentagon = new Polygon(new int[] {1,2, 0,4,0}, new int[] {1,2,3,4,5});
-		assertFalse(pentagon.inSingleQuadrant());
+		assertTrue(pentagon.inSingleQuadrant());
 
 		pentagon = new Polygon(new int[5], new int[5]); //all zeroes
 		assertTrue(pentagon.inSingleQuadrant());

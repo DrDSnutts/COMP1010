@@ -39,6 +39,9 @@ public class Point {
 	 * @return true i the calling object and the parameter object represent the same physical point
 	 */	 	  			     		 		    		 	
 	public boolean identical(Point other) {	 	  			     		 		    		 	
+		if(this.x == other.x && this.y == other.y) {
+			return true;
+		}
 		return false;
 	}	 	  			     		 		    		 	
 	
@@ -61,8 +64,17 @@ public class Point {
 	 * For details: read https://en.wikipedia.org/wiki/Quadrant_(plane_geometry)
 	 * Assume x=0 is in the right half and y=0 is in the top half
 	 */	 	  			     		 		    		 	
-	public int getQuadrant() {	 	  			     		 		    		 	
-		return 0;
+	public int getQuadrant() {	
+		if(x>=0 && y>=0) {
+			return 1;
+		}
+		if(x<=0 && y>=0) {
+			return 2;
+		}
+		if(x<0 && y<0) {
+			return 3;
+		}
+		return 4;
 	}	 	  			     		 		    		 	
 	
 	/**	 	  			     		 		    		 	
@@ -73,7 +85,32 @@ public class Point {
 	 * -1 if calling object is closer to the origin than the parameter object
 	 * 0 if calling object is the same distance from the origin as the parameter object
 	 */	 	  			     		 		    		 	
-	public int compareTo(Point other) {	 	  			     		 		    		 	
+	public int compareTo(Point other) {	
+		//ensure all values are positive
+		if(this.x < 0) {
+			this.x = -this.x;
+		}
+		if(this.y < 0) {
+			this.y = -this.y;
+		}
+		if(other.x < 0) {
+			other.x = -other.x;
+		}
+		if(other.y < 0) {
+			other.y = -other.y;
+		}
+		
+		//sum the x and y values
+		int thisDist = this.x+this.y;
+		int otherDist = other.x+other.y;
+		
+		//compare the sum of x and y
+		if(thisDist > otherDist) {
+			return 1;
+		}
+		if(otherDist > thisDist) {
+			return -1;
+		}
 		return 0;
 	}	 	  			     		 		    		 	
 	
@@ -83,8 +120,12 @@ public class Point {
 	 * @return a Point that represents the calling object shifted by the parameter object.
 	 * For example, when you shift (5, 3) by (2, -5), you get (7, -2)
 	 */	 	  			     		 		    		 	
-	public Point shift(Point other) {	 	  			     		 		    		 	
-		return null;
+	public Point shift(Point other) {	
+		int sumX = this.x+other.x;
+		int sumY = this.y+other.y;
+		
+		Point shift = new Point(sumX, sumY);
+		return shift;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -93,7 +134,9 @@ public class Point {
 	 * See tests for samples for better understanding of the problem.
 	 */	 	  			     		 		    		 	
 	public Point flipXAxis() {	 	  			     		 		    		 	
-		return null;
+		int flipY = -y;
+		Point flipped = new Point(x,flipY);
+		return flipped;
 	}	 	  			     		 		    		 	
 	
 	/**	 	  			     		 		    		 	
@@ -102,7 +145,9 @@ public class Point {
 	 * See tests for samples
 	 */	 	  			     		 		    		 	
 	public Point flipYAxis() {	 	  			     		 		    		 	
-		return null;
+		int flipX = -x;
+		Point flipped = new Point(flipX, y);
+		return flipped;
 	}	 	  			     		 		    		 	
 	
 	/**	 	  			     		 		    		 	
@@ -120,6 +165,11 @@ public class Point {
 	 * (4, 0) lies on the line segment from (0, 0) to (4, 0)
 	 */	 	  			     		 		    		 	
 	public boolean liesOn(Point p1, Point p2) {	 	  			     		 		    		 	
+		if(this.x >= p1.x && this.x<= p2.x && this.y >= p1.y && this.y <= p2.y) {
+			return true;
+		}
+		
+		
 		return false;
 	}	 	  			     		 		    		 	
 }
