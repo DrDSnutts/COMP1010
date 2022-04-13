@@ -48,7 +48,17 @@ public class Polygon {
 	 * 
 	 * Make sure all objects (including arrays) copying is done using instance copy, not reference copy.
 	 */	 	  			     		 		    		 	
-	public Polygon(Point[] _points) {	 	  			     		 		    		 	
+	public Polygon(Point[] _points) {	
+		if(_points == null) {
+			points = new Point[0];
+		}
+		if(_points != null) {
+			points = new Point[_points.length];
+		}
+		
+		for(int i = 0; i<points.length; i++) {
+			points[i] = new Point (_points[i].x, _points[i].y);
+		}
 	}	 	  			     		 		    		 	
 
 	//DO NOT MODIFY!
@@ -70,8 +80,15 @@ public class Polygon {
 	 * @return index of the first point that has the same values for x and y coordinates
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
-	public int firstPointWithSameXY() {	 	  			     		 		    		 	
-		return 0;
+	public int firstPointWithSameXY() {	 
+		int count = 0;
+		for(int i = 0; i<points.length; i++) {
+			if(points[i].x == points[i].y) {
+				return count;
+			}
+			count++;
+		}
+		return -1;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -80,7 +97,14 @@ public class Polygon {
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
 	public int lastPointAtOrigin() {	 	  			     		 		    		 	
-		return 0;
+		int count = 0;
+		for(int i = points.length-1; i>0; i--) {
+			if(points[i].x == 0 && points[i].y == 0) {
+				return count;
+			}
+			count++;
+		}
+		return -1;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
