@@ -164,12 +164,14 @@ public class Point {
 	 * (0, 0) lies on the line segment from (0, 0) to (4, 0)
 	 * (4, 0) lies on the line segment from (0, 0) to (4, 0)
 	 */	 	  			     		 		    		 	
-	public boolean liesOn(Point p1, Point p2) {	 	  			     		 		    		 	
+	public boolean liesOn(Point p1, Point p2) {	
+		//check if any of the objects are identical, return true if yes
+		if(this.x == p1.x && this.y == p1.y || this.x == p2.x && this.y == p2.y) {
+			return true;
+		}
 		if(this.x >= p1.x && this.x<= p2.x && this.y >= p1.y && this.y <= p2.y) {
 			return true;
 		}
-		
-		
 		return false;
 	}	 	  			     		 		    		 	
 }
