@@ -2,7 +2,7 @@
 * DO NOT REMOVE THIS COMMENT
 * STUDENT ID: 46358757
 * STUDENT NAME: Dominic Wright
-* []: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
+* [x]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
 */
 public class Polygon {
 	public Point[] points;
@@ -19,8 +19,24 @@ public class Polygon {
 	 * 
 	 * in case of either array being null, initialize the array to an empty one.
 	 */	 	  			     		 		    		 	
-	public Polygon(int[] x, int[] y) {	 	  			     		 		    		 	
-	}	 	  			     		 		    		 	
+	public Polygon(int[] x, int[] y) {
+		if(x == null || y == null) {
+			points = new Point[0];
+			x = new int[0];
+			y = new int[0];
+		}
+		if(x.length <= y.length) {
+			points = new Point[x.length];	
+		}
+		if(y.length <= x.length) {
+			points = new Point [y.length];	
+		}
+		for(int i = 0; i<points.length; i++) {
+			points[i] = new Point(x[i], y[i]);
+		}
+		
+	}	 
+	
 
 	/**	 	  			     		 		    		 	
 	 * 
