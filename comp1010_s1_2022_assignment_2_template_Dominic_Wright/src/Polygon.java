@@ -190,16 +190,20 @@ public class Polygon {
 	public double longestEdge() {	
 		double d1 = 0;
 		double d2 = 0;
-		
-		for(int i = 1; i<=points.length; i++) {
-			d1 = distance(points[i-1].x, points[i-1].y, points[i].x, points[i].y);
+		double d3 = distance(points[0].x, points[0].y, points[points.length-1].x, points[points.length-1].y);
+
+		for(int i = 0; i<points.length-1; i++) {
+			d1 = distance(points[0].x, points[0].y, points[1].x, points[1].y);
 			d2 = distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y);
-			if(d1 > d2) {
-				return d1;
+			if(d2>d1) {
+				d1 = d2;
 			}
-			
 		}
-		return 0;
+
+		if(d3>d1) {
+			d1 = d3;
+		}
+		return d1;
 	}	 
 
 	public double distance(int x1, int y1, int x2, int y2) {
@@ -214,8 +218,15 @@ public class Polygon {
 	 * @return number of edges in the polygon that have a length between the two lengths
 	 * (inclusive on both sides)
 	 */	 	  			     		 		    		 	
-	public int countEdgesBetween(int minLength, int maxLength) {	 	  			     		 		    		 	
-		return 0;
+	public int countEdgesBetween(int minLength, int maxLength) {	
+		int count = 0;
+		
+		for(int i = 0; i<points.length-1; i++) {
+			if(distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y) < maxLength && distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y) > minLength) {
+				count++;
+			}
+		}
+		return count;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
