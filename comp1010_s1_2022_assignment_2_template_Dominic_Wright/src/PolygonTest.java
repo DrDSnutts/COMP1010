@@ -173,7 +173,15 @@ public class PolygonTest {
 
 	@Test @Order(5) @Graded(description="Polygon:goingFurtherFromOrigin", marks=2)
 	public void testGoingFurtherFromOrigin() {
-		fail("Students need to write their own tests");
+		assertFalse(triangle.goingFurtherFromOrigin());
+		assertTrue(line.goingFurtherFromOrigin());
+		assertFalse(square.goingFurtherFromOrigin());
+		assertFalse(rectangle.goingFurtherFromOrigin());
+		assertFalse(quadrilateral.goingFurtherFromOrigin());
+		assertFalse(pentagon.goingFurtherFromOrigin());
+		
+		triangle = new Polygon(new int[] {1,2,5}, new int[] {1,2,1});
+		assertTrue(triangle.goingFurtherFromOrigin());
 		
 		//DO NOT REMOVE THE FOLLOWING STATEMENT
 		currentMethodName = new Throwable().getStackTrace()[0].getMethodName();
@@ -181,7 +189,11 @@ public class PolygonTest {
 
 	@Test @Order(6) @Graded(description="Polygon:circumference", marks=2)
 	public void testCircumference() {
-		fail("Students need to write their own tests");
+		assertEquals(6.650, triangle.circumference(),0.001);
+		assertEquals(18, square.circumference(),0.001);
+		assertEquals(14, rectangle.circumference(),0.001);
+		assertEquals(16.122, quadrilateral.circumference(),0.001);
+		assertEquals(15.759, pentagon.circumference(),0.001);
 		
 		//DO NOT REMOVE THE FOLLOWING STATEMENT
 		currentMethodName = new Throwable().getStackTrace()[0].getMethodName();

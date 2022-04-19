@@ -1,9 +1,9 @@
 /**
-* DO NOT REMOVE THIS COMMENT
-* STUDENT ID: 46358757
-* STUDENT NAME: Dominic Wright
-* [x]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
-*/
+ * DO NOT REMOVE THIS COMMENT
+ * STUDENT ID: 46358757
+ * STUDENT NAME: Dominic Wright
+ * [x]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
+ */
 public class Polygon {
 	public Point[] points;
 
@@ -34,9 +34,9 @@ public class Polygon {
 		for(int i = 0; i<points.length; i++) {
 			points[i] = new Point(x[i], y[i]);
 		}
-		
+
 	}	 
-	
+
 
 	/**	 	  			     		 		    		 	
 	 * 
@@ -55,7 +55,7 @@ public class Polygon {
 		if(_points != null) {
 			points = new Point[_points.length];
 		}
-		
+
 		for(int i = 0; i<points.length; i++) {
 			points[i] = new Point (_points[i].x, _points[i].y);
 		}
@@ -112,9 +112,27 @@ public class Polygon {
 	 * @return true if every point is further from origin than the last point,
 	 * false otherwise.
 	 */	 	  			     		 		    		 	
-	public boolean goingFurtherFromOrigin() {	 	  			     		 		    		 	
+	public boolean goingFurtherFromOrigin() {	
+		int counter = 1;
+		for(int i = 1; i < points.length; i++) {
+			if(points[i-1].x + points[i-1].y < points[i].x + points[i].y) {
+				counter++;
+			}
+		}
+		if(counter == points.length) {
+			return true;
+		}
 		return false;
-	}	 	  			     		 		    		 	
+	}	 	
+
+	public int absoluteVal(int n) {
+		if(n < 0) {
+			return -n;
+		}
+		else {
+			return n;
+		}
+	}
 
 	/**	 	  			     		 		    		 	
 	 * 
@@ -124,8 +142,14 @@ public class Polygon {
 	 * second last point to last,
 	 * last point back to first
 	 */	 	  			     		 		    		 	
-	public double circumference() {	 	  			     		 		    		 	
-		return 0;
+	public double circumference() {	 	
+		double distance = 0;
+		double sum = 0;
+		for(int i = 1; i<points.length; i++) {
+			distance = distance(points[i-1].x, points[i-1].y, points[i].x, points[i].y);
+			sum = sum + distance;
+		}
+		return sum+distance(points[0].x, points[0].y, points[points.length-1].x, points[points.length-1].y);
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -134,7 +158,12 @@ public class Polygon {
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
 	public int firstPointOnOrigin() {	 	  			     		 		    		 	
-		return 0;
+		for(int i = 0; i<points.length; i++) {
+			if(points[i].x == 0 && points[i].y == 0) {
+				return i;
+			}
+		}
+		return -1;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -143,7 +172,12 @@ public class Polygon {
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
 	public int lastPointWithSameXY() {	 	  			     		 		    		 	
-		return 0;
+		for(int i = points.length-1; i > 0; i--) {
+			if(points[i].x == points[i].y) {
+				return i;
+			}
+		}
+		return -1;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -153,9 +187,25 @@ public class Polygon {
 	 * For example if there are three consecutive points (2,3) -> (7,3) -> (8,3),
 	 * then (2,3) -> (7,3) is one side, and (7,3) -> (8,3) is a second side.
 	 */	 	  			     		 		    		 	
-	public double longestEdge() {	 	  			     		 		    		 	
+	public double longestEdge() {	
+		double d1 = 0;
+		double d2 = 0;
+		
+		for(int i = 1; i<=points.length; i++) {
+			d1 = distance(points[i-1].x, points[i-1].y, points[i].x, points[i].y);
+			d2 = distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y);
+			if(d1 > d2) {
+				return d1;
+			}
+			
+		}
 		return 0;
-	}	 	  			     		 		    		 	
+	}	 
+
+	public double distance(int x1, int y1, int x2, int y2) {
+		double distance = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2-x1));
+		return distance;
+	}
 
 	/**	 	  			     		 		    		 	
 	 * 
