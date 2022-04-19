@@ -1,7 +1,7 @@
 DO NOT REMOVE THIS PARAGRAPH  
 STUDENT ID: 46358757  
 STUDENT NAME: Dominic Wright  
-[]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
+[x]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
 
 # COMP1010 S1 2022 Assignment 2
 
