@@ -220,7 +220,7 @@ public class Polygon {
 	 */	 	  			     		 		    		 	
 	public int countEdgesBetween(int minLength, int maxLength) {	
 		int count = 0;
-		
+
 		for(int i = 0; i<points.length-1; i++) {
 			if(distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y) < maxLength && distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y) > minLength) {
 				count++;
@@ -245,7 +245,12 @@ public class Polygon {
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
 	public int firstPointInQuadrant(int q) {	 	  			     		 		    		 	
-		return 0;
+		for(int i = 0; i<points.length; i++) {
+			if(points[i].getQuadrant() == q) {
+				return i;
+			}
+		}
+		return -1;
 	}	 	  			     		 		    		 	
 
 
@@ -254,59 +259,76 @@ public class Polygon {
 	 * @return true if all points of the polygon are in the same quadrant, false otherwise
 	 * 
 	 */	 	  			     		 		    		 	
-	public boolean inSingleQuadrant() {	 	  			     		 		    		 	
+	public boolean inSingleQuadrant() {	 	
+		int pointCount = 0;
+		for(int i = 0; i<points.length-1; i++) {
+			if(points[i].getQuadrant() == points[i+1].getQuadrant()) {
+				pointCount++;
+			}
+		}
+		if(pointCount >= points.length-1) {
+				return true;
+			}
 		return false;
-	}	 	  			     		 		    		 	
+		}	 	  			     		 		    		 	
 
-	/**	 	  			     		 		    		 	
-	 * 
-	 * @param p
-	 * @return number of points that are further from the origin than point p is. 
-	 */	 	  			     		 		    		 	
-	public int countPointsFurtherThan(Point p) {	 	  			     		 		    		 	
-		return 0;
-	}	 	  			     		 		    		 	
+		/**	 	  			     		 		    		 	
+		 * 
+		 * @param p
+		 * @return number of points that are further from the origin than point p is. 
+		 */	 	  			     		 		    		 	
+		public int countPointsFurtherThan(Point p) {
+			int count = 0;
+			for(int i = 0; i<points.length; i++) {
+				int thisPoint = this.points[i].x + this.points[i].y;
+				int pPoint = p.x + p.y;
+				if(thisPoint >= pPoint) {
+					count++;
+				}
+			}
+			return count;
+		}	 	  			     		 		    		 	
 
-	/**	 	  			     		 		    		 	
-	 * @return a 2-dimensional array containing points.length subarrays,
-	 * each containing two items.
-	 * first subarray contains points[0].x, points[0].y
-	 * second subarray contains points[1].x, points[1].y
-	 * and so on
-	 */	 	  			     		 		    		 	
-	public int[][] get2DArray() {	 	  			     		 		    		 	
-		return null;
-	}	 	  			     		 		    		 	
+		/**	 	  			     		 		    		 	
+		 * @return a 2-dimensional array containing points.length subarrays,
+		 * each containing two items.
+		 * first subarray contains points[0].x, points[0].y
+		 * second subarray contains points[1].x, points[1].y
+		 * and so on
+		 */	 	  			     		 		    		 	
+		public int[][] get2DArray() {	 	  			     		 		    		 	
+			return null;
+		}	 	  			     		 		    		 	
 
-	/**	 	  			     		 		    		 	
-	 * HD - 1
-	 * @return number of points that are *essential*.
-	 * Now, what is a NON-essential point?
-	 * Say, there are three adjacent points on the polygon such that,
-	 * points[i].x, points[i].y = 2, 3
-	 * points[i+1].x, points[i+1].y = 6, 2
-	 * x[i+2], y[i+2] = 14, 0
-	 * 
-	 * You will notice they all lie on a straight line and that 
-	 * (6, 2) lies between (2, 3) and (14, 0).
-	 * Hence point (6, 2) can be removed from the polygon 
-	 * while maintaining the shape of the polygon,
-	 * and is called NON-essential.
-	 * 
-	 * So, any point that lies on the line segment connecting 
-	 * the two points (one before and one after it) is NON-essential
-	 */	 	  			     		 		    		 	
-	public int countEssentialPoints() {	 	  			     		 		    		 	
-		return 0;
-	}	 	  			     		 		    		 	
+		/**	 	  			     		 		    		 	
+		 * HD - 1
+		 * @return number of points that are *essential*.
+		 * Now, what is a NON-essential point?
+		 * Say, there are three adjacent points on the polygon such that,
+		 * points[i].x, points[i].y = 2, 3
+		 * points[i+1].x, points[i+1].y = 6, 2
+		 * x[i+2], y[i+2] = 14, 0
+		 * 
+		 * You will notice they all lie on a straight line and that 
+		 * (6, 2) lies between (2, 3) and (14, 0).
+		 * Hence point (6, 2) can be removed from the polygon 
+		 * while maintaining the shape of the polygon,
+		 * and is called NON-essential.
+		 * 
+		 * So, any point that lies on the line segment connecting 
+		 * the two points (one before and one after it) is NON-essential
+		 */	 	  			     		 		    		 	
+		public int countEssentialPoints() {	 	  			     		 		    		 	
+			return 0;
+		}	 	  			     		 		    		 	
 
-	/**	 	  			     		 		    		 	
-	 * HD - 2
-	 * @return a Polygon object containing only essential points.
-	 * Note the calling object should not be modified.
-	 * Please see test for a better understanding of the problem.
-	 */	 	  			     		 		    		 	
-	public Polygon getOptimized() {	 	  			     		 		    		 	
-		return null;
-	}	 	  			     		 		    		 	
-}
+		/**	 	  			     		 		    		 	
+		 * HD - 2
+		 * @return a Polygon object containing only essential points.
+		 * Note the calling object should not be modified.
+		 * Please see test for a better understanding of the problem.
+		 */	 	  			     		 		    		 	
+		public Polygon getOptimized() {	 	  			     		 		    		 	
+			return null;
+		}	 	  			     		 		    		 	
+	}
