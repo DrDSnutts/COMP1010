@@ -277,7 +277,14 @@ public class PolygonTest {
 
 	@Test @Order(13) @Graded(description="Polygon:closestToOriginIndex", marks=4)
 	public void testClosestToOriginIndex() {
-		fail("Students need to write their own tests");
+		assertEquals(1, triangle.closestToOriginIndex()); 
+		assertEquals(1, rectangle.closestToOriginIndex());
+		assertEquals(1, square.closestToOriginIndex());
+		assertEquals(1, quadrilateral.closestToOriginIndex());
+		assertEquals(1, pentagon.closestToOriginIndex());
+		
+		triangle = new Polygon(new int[] {5,3,1}, new int[] {1,3,1});
+		assertEquals(3, triangle.closestToOriginIndex());
 		
 		//DO NOT REMOVE THE FOLLOWING STATEMENT
 		currentMethodName = new Throwable().getStackTrace()[0].getMethodName();
