@@ -236,6 +236,7 @@ public class Polygon {
 	 */	 	  			     		 		    		 	
 	public int closestToOriginIndex() {	 	  			     		 		    		 	
 		return 0;
+		//test
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
