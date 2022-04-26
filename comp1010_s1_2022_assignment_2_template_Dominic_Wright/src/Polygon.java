@@ -234,9 +234,17 @@ public class Polygon {
 	 * @return index of the point that is closest to the origin, which is (0, 0)
 	 * In case of a tie, return the lowest index
 	 */	 	  			     		 		    		 	
-	public int closestToOriginIndex() {	 	  			     		 		    		 	
-		return 0;
-		//test
+	public int closestToOriginIndex() {	 
+		int minIndex = 0;
+		for(int i = 0; i<points.length-1; i++) {
+			if(distance(0,0, points[i].x, points[i].y) < distance(0,0, points[i+1].x, points[i+1].y)) {
+				return minIndex;
+			}
+			else {
+				minIndex++;
+			}
+		}
+		return minIndex;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -281,9 +289,9 @@ public class Polygon {
 		public int countPointsFurtherThan(Point p) {
 			int count = 0;
 			for(int i = 0; i<points.length; i++) {
-				int thisPoint = this.points[i].x + this.points[i].y;
-				int pPoint = p.x + p.y;
-				if(thisPoint >= pPoint) {
+				double thisDistance = distance(0,0,this.points[i].x, this.points[i].y);
+				double pDistance = distance(0,0,p.x, p.y);
+				if(thisDistance > pDistance) {
 					count++;
 				}
 			}
@@ -298,7 +306,16 @@ public class Polygon {
 		 * and so on
 		 */	 	  			     		 		    		 	
 		public int[][] get2DArray() {	 	  			     		 		    		 	
-			return null;
+			int length = points.length;
+			int[][] arr = new int [length][2];
+			
+			for(int i = 0; i<arr.length; i++) {
+				for(int y = 0; y<arr[i].length; y++) {
+					arr[i][0] = points[i].x;
+					arr[i][1] = points[i].y;
+				}
+			}
+			return arr;
 		}	 	  			     		 		    		 	
 
 		/**	 	  			     		 		    		 	
