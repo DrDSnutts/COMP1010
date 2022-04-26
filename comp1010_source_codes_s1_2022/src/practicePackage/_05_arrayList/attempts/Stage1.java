@@ -11,7 +11,11 @@ public class Stage1 {
 	 * return null if list is null or empty
 	 */
 	public static Integer getLastItem(ArrayList<Integer> list) {
-		return null;
+		if(list == null || list.size() == 0) {
+			return null;
+		}
+		
+		return list.get(list.size()-1);
 	}
 
 	/**
@@ -22,7 +26,15 @@ public class Stage1 {
 	 * return the only value if list contains a single item
 	 */
 	public static Integer getSumFirstLastItems(ArrayList<Integer> list) {
-		return null; //to be completed
+		if(list == null || list.size() == 0) {
+			return null;
+		}
+		
+		if(list.size() == 1) {
+			return list.get(0);
+		}
+		
+		return list.get(0) + list.get(list.size()-1);
 	}
 
 	/**
@@ -32,6 +44,13 @@ public class Stage1 {
 	 * return false if list is null
 	 */
 	public static boolean containsEvenNumberOfItems(ArrayList<Integer> list) {
+		if(list == null) {
+			return false;
+		}
+		
+		if(list.size()%2 == 0) {
+			return true;
+		}
 		return false;
 	}
 
@@ -43,7 +62,14 @@ public class Stage1 {
 	 * return false if EITHER list is null
 	 */
 	public static boolean sameSize(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return false; //to be completed
+		if(a == null || b == null) {
+			return false;
+		}
+		
+		if(a.size() == b.size()) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -62,7 +88,17 @@ public class Stage1 {
 	 * 
 	 */
 	public static Integer median(ArrayList<Integer> list) {
-		return null; //to be completed
+		if(list == null || list.size() == 0) {
+			return null;
+		}
+		if(list.size() == 1) {
+			return list.get(0);
+		}
+		
+		if(list.size()%2 == 0) {
+			return list.get(((list.size())/2)-1);
+		}
+		return list.get(list.size()/2);
 	}
 	
 	/**
@@ -72,6 +108,10 @@ public class Stage1 {
 	 * return null if list is null or empty
 	 */
 	public static Rectangle getFirstItem(ArrayList<Rectangle> list) {
-		return null; //to be completed
+		if(list == null || list.size() == 0) {
+			return null;
+		}
+		
+		return list.get(0);
 	}
 }

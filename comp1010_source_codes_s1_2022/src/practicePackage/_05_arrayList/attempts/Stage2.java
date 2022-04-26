@@ -12,7 +12,15 @@ public class Stage2 {
 	 * return 0 if list is null or empty
 	 */
 	public static int sum(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i<list.size(); i++) {
+			sum += list.get(i);
+		}
+		return sum;
 	}
 
 	/**
@@ -22,7 +30,17 @@ public class Stage2 {
 	 * return 0 if list is null or empty
 	 */
 	public static int sumNegatives(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for (int i = 0; i<list.size(); i++) {
+			if(list.get(i) < 0) {
+				sum+=list.get(i);
+			}
+		}
+		return sum;
 	}
 
 	/**
@@ -32,7 +50,17 @@ public class Stage2 {
 	 * return 0 if list is null or empty
 	 */
 	public static int countEven(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		int count = 0;
+		for (int i = 0; i<list.size(); i++) {
+			if(list.get(i)%2 == 0) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/**
@@ -43,7 +71,17 @@ public class Stage2 {
 	 * return 0 if list is null or empty
 	 */
 	public static int count(ArrayList<Integer> list, int target) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		int count = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) == target) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/**
@@ -55,7 +93,17 @@ public class Stage2 {
 	 * return 0 if list is null or empty
 	 */
 	public static int countInRange(ArrayList<Integer> list, int low, int high) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		int count = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i)>=low && list.get(i)<=high) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/**
@@ -67,7 +115,16 @@ public class Stage2 {
 	 * return false if list is null or empty
 	 */
 	public static boolean containsInRange(ArrayList<Integer> list, int low, int high) {
-		return false; //to be completed
+		if(list == null || list.size() == 0) {
+			return false;
+		}
+		
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i)>=low && list.get(i)<=high) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -80,7 +137,23 @@ public class Stage2 {
 	 * return true if the list is empty
 	 */
 	public static boolean allInRange(ArrayList<Integer> list, int low, int high) {
-		return false; //to be completed
+		if(list == null) {
+			return false;
+		}
+		if(list.size() == 0) {
+			return true;
+		}
+		
+		int count = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i)>=low && list.get(i)<=high) {
+				count++;
+			}
+		}
+		if(count >= list.size()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
