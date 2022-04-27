@@ -25,12 +25,15 @@ public class Polygon {
 			x = new int[0];
 			y = new int[0];
 		}
+		
 		if(x.length <= y.length) {
 			points = new Point[x.length];	
 		}
+		
 		if(y.length <= x.length) {
 			points = new Point [y.length];	
 		}
+		
 		for(int i = 0; i<points.length; i++) {
 			points[i] = new Point(x[i], y[i]);
 		}
@@ -81,13 +84,12 @@ public class Polygon {
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
 	public int firstPointWithSameXY() {	 
-		int count = 0;
 		for(int i = 0; i<points.length; i++) {
 			if(points[i].x == points[i].y) {
-				return count;
+				return i;
 			}
-			count++;
 		}
+		
 		return -1;
 	}	 	  			     		 		    		 	
 
@@ -97,13 +99,12 @@ public class Polygon {
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
 	public int lastPointAtOrigin() {	 	  			     		 		    		 	
-		int count = 0;
 		for(int i = points.length-1; i>0; i--) {
 			if(points[i].x == 0 && points[i].y == 0) {
-				return count;
+				return i;
 			}
-			count++;
 		}
+		
 		return -1;
 	}	 	  			     		 		    		 	
 
@@ -119,9 +120,11 @@ public class Polygon {
 				counter++;
 			}
 		}
+		
 		if(counter == points.length) {
 			return true;
 		}
+		
 		return false;
 	}	 	
 
@@ -145,11 +148,15 @@ public class Polygon {
 	public double circumference() {	 	
 		double distance = 0;
 		double sum = 0;
+		double lastSide = distance(points[0].x, points[0].y, points[points.length-1].x, points[points.length-1].y); //last side of the polygon is hardcoded as it is from the last index to the first index
+		
+		//sums the distance of all sides except the last side
 		for(int i = 1; i<points.length; i++) {
 			distance = distance(points[i-1].x, points[i-1].y, points[i].x, points[i].y);
 			sum = sum + distance;
 		}
-		return sum+distance(points[0].x, points[0].y, points[points.length-1].x, points[points.length-1].y);
+		
+		return sum+lastSide;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -171,7 +178,7 @@ public class Polygon {
 	 * @return index of the last point that has the same values for x and y coordinates
 	 * return -1 if no such point exists.
 	 */	 	  			     		 		    		 	
-	public int lastPointWithSameXY() {	 	  			     		 		    		 	
+	public int lastPointWithSameXY() {	
 		for(int i = points.length-1; i > 0; i--) {
 			if(points[i].x == points[i].y) {
 				return i;
@@ -222,10 +229,12 @@ public class Polygon {
 		int count = 0;
 
 		for(int i = 0; i<points.length-1; i++) {
-			if(distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y) < maxLength && distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y) > minLength) {
+			double sideLength = distance(points[i].x, points[i].y, points[i+1].x, points[i+1].y);
+			if( sideLength < maxLength && sideLength > minLength) {
 				count++;
 			}
 		}
+		
 		return count;
 	}	 	  			     		 		    		 	
 
@@ -236,6 +245,7 @@ public class Polygon {
 	 */	 	  			     		 		    		 	
 	public int closestToOriginIndex() {	 
 		int minIndex = 0;
+		
 		for(int i = 0; i<points.length-1; i++) {
 			if(distance(0,0, points[i].x, points[i].y) < distance(0,0, points[i+1].x, points[i+1].y)) {
 				return minIndex;
@@ -244,6 +254,7 @@ public class Polygon {
 				minIndex++;
 			}
 		}
+		
 		return minIndex;
 	}	 	  			     		 		    		 	
 
@@ -270,14 +281,17 @@ public class Polygon {
 	 */	 	  			     		 		    		 	
 	public boolean inSingleQuadrant() {	 	
 		int pointCount = 0;
+		
 		for(int i = 0; i<points.length-1; i++) {
 			if(points[i].getQuadrant() == points[i+1].getQuadrant()) {
 				pointCount++;
 			}
 		}
+		
 		if(pointCount >= points.length-1) {
 				return true;
 			}
+		
 		return false;
 		}	 	  			     		 		    		 	
 
@@ -288,6 +302,7 @@ public class Polygon {
 		 */	 	  			     		 		    		 	
 		public int countPointsFurtherThan(Point p) {
 			int count = 0;
+			
 			for(int i = 0; i<points.length; i++) {
 				double thisDistance = distance(0,0,this.points[i].x, this.points[i].y);
 				double pDistance = distance(0,0,p.x, p.y);
@@ -307,8 +322,9 @@ public class Polygon {
 		 */	 	  			     		 		    		 	
 		public int[][] get2DArray() {	 	  			     		 		    		 	
 			int length = points.length;
-			int[][] arr = new int [length][2];
+			int[][] arr = new int [length][2]; //number of sub arrays is equal to points.length and each sub array has 2 indexes for x and y
 			
+			//for a 2d array a nested loop is used in order to populate the sub arrays with the corresponding x and y values
 			for(int i = 0; i<arr.length; i++) {
 				for(int y = 0; y<arr[i].length; y++) {
 					arr[i][0] = points[i].x;
@@ -338,7 +354,9 @@ public class Polygon {
 		 */	 	  			     		 		    		 	
 		public int countEssentialPoints() {	 	  			     		 		    		 	
 			return 0;
-		}	 	  			     		 		    		 	
+		}	 
+		
+		
 
 		/**	 	  			     		 		    		 	
 		 * HD - 2
