@@ -353,10 +353,21 @@ public class Polygon {
 		 * the two points (one before and one after it) is NON-essential
 		 */	 	  			     		 		    		 	
 		public int countEssentialPoints() {	 	  			     		 		    		 	
-			return 0;
+			int essentialCount = 0;
+			
+			for(int i = 0; i<points.length-1; i++) {
+				double m = ((points[i+1].y-points[i].y)/(points[i+1].x-points[i].x));
+				if(slopeIntercept(points[i].x,points[i].y,m) == slopeIntercept(points[i+1].x,points[i+1].y,m)) {
+					essentialCount++;
+				}
+			}
+			return essentialCount;
 		}	 
 		
-		
+		public double slopeIntercept (int x, int y, double m) {
+			double b = y-(x*m);
+			return b;
+		}
 
 		/**	 	  			     		 		    		 	
 		 * HD - 2
