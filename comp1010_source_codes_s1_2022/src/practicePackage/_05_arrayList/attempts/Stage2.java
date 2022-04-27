@@ -166,7 +166,17 @@ public class Stage2 {
 	 * method isPrime(int) from class MathService as MathService.isPrime(value_to_check)
 	 */
 	public static int countPrimes(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		int primeCount = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(MathService.isPrime(list.get(i))) {
+				primeCount++;
+			}
+		}
+		return primeCount;
 	}
 
 	/**
@@ -179,7 +189,16 @@ public class Stage2 {
 	 * method isPrime(int) from class MathService as MathService.isPrime(value_to_check)
 	 */
 	public static boolean containsPrime(ArrayList<Integer> list) {
-		return false; //to be completed
+		if(list == null || list.size() == 0) {
+			return false;
+		}
+		
+		for(int i = 0; i<list.size(); i++) {
+			if(MathService.isPrime(list.get(i))) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -193,7 +212,24 @@ public class Stage2 {
 	 * method isPrime(int) from class MathService as MathService.isPrime(value_to_check) 
 	 */
 	public static boolean allPrimes(ArrayList<Integer> list) {
-		return false; //to be completed
+		if(list == null) {
+			return false;
+		}
+		if(list.size() == 0) {
+			return true;
+		}
+		
+		int primeCount = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(MathService.isPrime(list.get(i))) {
+				primeCount++;
+			}
+		}
+		
+		if(primeCount >= list.size()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

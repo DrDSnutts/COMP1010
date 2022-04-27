@@ -14,7 +14,20 @@ public class Stage3 {
 	 * return -1 if list is null or target doesn't exist TWICE in the list.
 	 */
 	public static int secondIndexOf(ArrayList<Integer> list, int target) {
-		return 0; //to be completed
+		if(list == null) {
+			return -1;
+		}
+		
+		int count = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) == target) {
+				count++;
+			}
+			if(count == 2) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -25,7 +38,20 @@ public class Stage3 {
 	 * return -1 if list is null or target doesn't exist TWICE in the list.
 	 */
 	public static int secondLastIndexOf(ArrayList<Integer> list, int target) {
-		return 0; //to be completed
+		if(list == null) {
+			return -1;
+		}
+		
+		int count = 0;
+		for(int i = list.size()-1; i>0; i--) {
+			if(list.get(i) == target) {
+				count++;
+			}
+			if(count == 2) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 	/**
@@ -35,7 +61,16 @@ public class Stage3 {
 	 * return null if list is null
 	 */
 	public static ArrayList<Integer> getPositives(ArrayList<Integer> list) {
-		return null; //to be completed
+		if(list == null) {
+			return null;
+		}
+		
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) <= 0) {
+				list.remove(i);
+			}
+		}
+		return list;
 	}
 
 	/**
@@ -50,7 +85,7 @@ public class Stage3 {
 	 * TIP: use remove method and use the debugger to ensure that the right item is being removed
 	 */
 	public static void removeNegatives(ArrayList<Integer> list) {
-		//to be completed
+		list.removeIf(val -> val < 0);
 	}
 
 	/**
@@ -60,7 +95,16 @@ public class Stage3 {
 	 * return false if list is null or if it contains less than 2 items
 	 */
 	public static boolean twoInARow(ArrayList<Integer> list, int target) {
-		return false; //to be completed
+		if(list == null) {
+			return false;
+		}
+		
+		for(int i = 0; i<list.size()-1; i++) {
+			if(list.get(i) == list.get(i+1)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -70,7 +114,16 @@ public class Stage3 {
 	 * return false if list is null or if it contains less than 3 items
 	 */
 	public static boolean threeInARow(ArrayList<Integer> list, int target) {
-		return false; //to be completed
+		if(list == null) {
+			return false;
+		}
+		
+		for(int i = 0; i<list.size()-2; i++) {
+			if(list.get(i) == list.get(i+1) && list.get(i) == list.get(i+2)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -87,7 +140,22 @@ public class Stage3 {
 	 * a = null, b = [90,20,70,10], return false
 	 */
 	public static boolean mutuallyReverse(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return false; //to be completed
+		if(a == null || b == null) {
+			return false;
+		}
+		
+		int count = 0;
+		int reverse = b.size()-1;
+		for(int i = 0; i<a.size(); i++) {
+			if(a.get(i) == b.get(reverse)) {
+				count++;
+			}
+			reverse--;
+		}
+		if(count >= a.size()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
