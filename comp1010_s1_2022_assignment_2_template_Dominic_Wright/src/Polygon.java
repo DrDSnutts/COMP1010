@@ -354,10 +354,18 @@ public class Polygon {
 		 */	 	  			     		 		    		 	
 		public int countEssentialPoints() {	 	  			     		 		    		 	
 			int essentialCount = 0;
+			double m;
 			
 			for(int i = 0; i<points.length-1; i++) {
-				double m = ((points[i+1].y-points[i].y)/(points[i+1].x-points[i].x));
-				if(slopeIntercept(points[i].x,points[i].y,m) == slopeIntercept(points[i+1].x,points[i+1].y,m)) {
+				//if x and y values are all 0, the gradient becomes 0
+				if(points[i].x != 0 && points[i].y != 0 && points[i+1].x != 0 && points[i+1].y != 0) {
+					m = ((points[i+1].y-points[i].y)/(points[i+1].x-points[i].x));
+				}
+				else {
+					m = 0;
+				}
+				
+				if(slopeIntercept(points[i].x,points[i].y,m) != slopeIntercept(points[i+1].x,points[i+1].y,m)) {
 					essentialCount++;
 				}
 			}
@@ -366,7 +374,10 @@ public class Polygon {
 		
 		public double slopeIntercept (int x, int y, double m) {
 			double b = y-(x*m);
-			return b;
+			x = 0;
+			y = (int)(m*x+b);
+			
+			return y;
 		}
 
 		/**	 	  			     		 		    		 	

@@ -167,7 +167,23 @@ public class Stage3 {
 	 * TIP: use of methods indexOf and lastIndexOf will make your life oh-so-easy
 	 */
 	public static boolean allUnique(ArrayList<Integer> list) {
-		return false; //to be completed
+		if(list == null) {
+			return false;
+		}
+		if(list.size() == 0) {
+			return true;
+		}
+		
+		int count = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.indexOf(list.get(i)) == list.lastIndexOf(list.get(i))) {
+				count++;
+			}
+		}
+		if(count >= list.size()-1) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -180,7 +196,16 @@ public class Stage3 {
 	 * return null if either of the parameter lists is null
 	 */
 	public static ArrayList<Rectangle> getRectangles(ArrayList<Integer> widths, ArrayList<Integer> heights) {
-		return null; //to be completed
+		if(widths == null || heights == null) {
+			return null;
+		}
+		
+		ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
+		for(int i = 0; i<widths.size(); i++) {
+			Rectangle newRect = new Rectangle(widths.get(i), heights.get(i));
+			rectangles.add(newRect);
+		}
+		return rectangles;
 	}
 	
 	/**
