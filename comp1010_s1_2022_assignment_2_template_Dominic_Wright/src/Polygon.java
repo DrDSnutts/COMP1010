@@ -354,30 +354,49 @@ public class Polygon {
 		 */	 	  			     		 		    		 	
 		public int countEssentialPoints() {	 	  			     		 		    		 	
 			int essentialCount = 0;
-			double m;
+			int nonEssentialCount = 0;
+			double m; //gradient
 			
-			for(int i = 0; i<points.length-1; i++) {
-				//if x and y values are all 0, the gradient becomes 0
-				if(points[i].x != 0 && points[i].y != 0 && points[i+1].x != 0 && points[i+1].y != 0) {
+			//if all elements in the array are the same, return 1 essential point
+			for(int y = 0; y<points.length-1; y++) {
+				if(points[y].x == points[y+1].x && points[y].y == points[y+1].y) {
+					nonEssentialCount++;
+				}
+				if(nonEssentialCount >= points.length-1) {
+					return 1;
+				}
+			}
+			
+			for(int i = 0; i<points.length-1; i++) {	
+				
+				//if x and y values are all 0 OR x and x+1 and y and y+1 are the same, the gradient becomes 0, other wise gradient is calculated with rise/run
+				if(points[i].x != 0 && points[i].y != 0 && points[i+1].x != 0 && points[i+1].y != 0 && points[i].x != points[i+1].x && points[i].y != points[i+1].y) {
 					m = ((points[i+1].y-points[i].y)/(points[i+1].x-points[i].x));
 				}
 				else {
 					m = 0;
 				}
 				
-				if(slopeIntercept(points[i].x,points[i].y,m) != slopeIntercept(points[i+1].x,points[i+1].y,m)) {
+				//if two points are not on the same line, essential count increases
+				if(slopeIntercept(points[i].x,points[i].y,m) != points[i+1].y) {
 					essentialCount++;
 				}
 			}
 			return essentialCount;
 		}	 
 		
+		/**
+		 * 
+		 * @param x = x location
+		 * @param y = y location
+		 * @param m = gradient
+		 * @return y intercept calculated from y = mx + b
+		 * 
+		 */
 		public double slopeIntercept (int x, int y, double m) {
 			double b = y-(x*m);
-			x = 0;
-			y = (int)(m*x+b);
 			
-			return y;
+			return b;
 		}
 
 		/**	 	  			     		 		    		 	

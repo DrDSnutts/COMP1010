@@ -135,7 +135,9 @@ public class Point {
 	 */	 	  			     		 		    		 	
 	public Point flipXAxis() {	 	  			     		 		    		 	
 		int flipY = -y;
+		
 		Point flipped = new Point(x,flipY);
+		
 		return flipped;
 	}	 	  			     		 		    		 	
 	
@@ -146,7 +148,9 @@ public class Point {
 	 */	 	  			     		 		    		 	
 	public Point flipYAxis() {	 	  			     		 		    		 	
 		int flipX = -x;
+		
 		Point flipped = new Point(flipX, y);
+		
 		return flipped;
 	}	 	  			     		 		    		 	
 	
@@ -169,9 +173,11 @@ public class Point {
 		if(this.x == p1.x && this.y == p1.y || this.x == p2.x && this.y == p2.y) {
 			return true;
 		}
+		
 		if(this.x >= p1.x && this.x<= p2.x && this.y >= p1.y && this.y <= p2.y) {
 			return true;
 		}
+		
 		return false;
 	}	 	  			     		 		    		 	
 }

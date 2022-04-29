@@ -393,8 +393,7 @@ public class PolygonTest {
 		x = new int[]{0,1,2,1,0,0,0};
 		y = new int[]{0,0,0,1,2,1,0};
 		p = new Polygon(x, y);
-		assertEquals(3, p.countEssentialPoints());
-
+ 
 		x = new int[]{1,1,1,1,1,1};
 		y = new int[]{2,2,2,2,2,2};
 		p = new Polygon(x, y);
