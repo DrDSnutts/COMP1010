@@ -368,7 +368,6 @@ public class Polygon {
 			}
 			
 			for(int i = 0; i<points.length-1; i++) {	
-				
 				//if x and y values are all 0 OR x and x+1 and y and y+1 are the same, the gradient becomes 0, other wise gradient is calculated with rise/run
 				if(points[i].x != 0 && points[i].y != 0 && points[i+1].x != 0 && points[i+1].y != 0 && points[i].x != points[i+1].x && points[i].y != points[i+1].y) {
 					m = ((points[i+1].y-points[i].y)/(points[i+1].x-points[i].x));
