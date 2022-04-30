@@ -128,6 +128,11 @@ public class Polygon {
 		return false;
 	}	 	
 
+	/**
+	 * 
+	 * @param n
+	 * @return absolute value of n
+	 */
 	public int absoluteVal(int n) {
 		if(n < 0) {
 			return -n;
@@ -207,12 +212,21 @@ public class Polygon {
 			}
 		}
 
+		//compares the line between the first and last point with the longest edge
 		if(d3>d1) {
 			d1 = d3;
 		}
 		return d1;
 	}	 
-
+	
+	/**
+	 * 
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @return distance
+	 */
 	public double distance(int x1, int y1, int x2, int y2) {
 		double distance = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2-x1));
 		return distance;
@@ -234,7 +248,6 @@ public class Polygon {
 				count++;
 			}
 		}
-		
 		return count;
 	}	 	  			     		 		    		 	
 
@@ -254,7 +267,6 @@ public class Polygon {
 				minIndex++;
 			}
 		}
-		
 		return minIndex;
 	}	 	  			     		 		    		 	
 
@@ -324,7 +336,7 @@ public class Polygon {
 			int length = points.length;
 			int[][] arr = new int [length][2]; //number of sub arrays is equal to points.length and each sub array has 2 indexes for x and y
 			
-			//for a 2d array a nested loop is used in order to populate the sub arrays with the corresponding x and y values
+			//nested loop is used to populate the sub arrays with the corresponding x and y values
 			for(int i = 0; i<arr.length; i++) {
 				for(int y = 0; y<arr[i].length; y++) {
 					arr[i][0] = points[i].x;
@@ -389,7 +401,7 @@ public class Polygon {
 		 * @param x = x location
 		 * @param y = y location
 		 * @param m = gradient
-		 * @return y intercept calculated from y = mx + b
+		 * @return b which is the y intercept calculated from y = mx + b
 		 * 
 		 */
 		public double slopeIntercept (int x, int y, double m) {

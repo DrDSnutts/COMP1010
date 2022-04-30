@@ -221,7 +221,18 @@ public class Stage3 {
 	 * NOTE 2: inc can be negative too :)
 	 */
 	public static ArrayList<Integer> generatePatternedArray(int n, int init, int inc) {
-		return null; //to be completed
+		if(n<0) {
+			return null;
+		}
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		int sum = init;
+		
+		for(int i = 0; i<n; i++) {
+			arr.add(sum);
+			sum = sum + inc;
+		}
+		return arr;
 	}
 
 	/**
@@ -230,7 +241,28 @@ public class Stage3 {
 	 * @return number of items that exist exactly once in the list passed
 	 */
 	public static int countUniqueItems(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null || list.size() == 0) {
+			return 0;
+		}
+		
+		if(list.size() == 1) {
+			return 1;
+		}
+		
+		int sameCount = 0;
+		for(int i = 0; i<list.size()-1; i++) {
+			if (list.get(i) == list.get(i+1)) {
+				sameCount++;
+			}
+		}
+		if(sameCount >= list.size()-1) {
+			return 0;
+		}
+		
+		long n = list.stream().distinct().count();
+		return (int) n;
+		
+		
 	}
 
 	/**
