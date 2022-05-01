@@ -62,7 +62,14 @@ public class Stage4 {
 	 * return null if EITHER of the parameter lists are null
 	 */
 	public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return null; //to be completed
+		if(a == null || b == null) {
+			return null;
+		}
+		
+		ArrayList<Integer> merged = Stage3.merge(a, b);
+		sort(merged);
+		return merged;
+		
 	}
 
 	/**

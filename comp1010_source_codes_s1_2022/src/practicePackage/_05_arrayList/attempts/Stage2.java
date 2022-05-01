@@ -269,7 +269,13 @@ public class Stage2 {
 	 * if list = [3,0,-2,6], it should become [9, 0, 4, 36]
 	 */
 	public static void squareUp(ArrayList<Integer> list) {
-		//to be completed
+		if(list == null || list.size() == 0) {
+			return;
+		}
+		
+		for(int i = 0; i<list.size(); i++) {
+			list.set(i, list.get(i)*list.get(i));
+		}
 	}
 
 	/**
@@ -279,7 +285,17 @@ public class Stage2 {
 	 * return 0 if the list is null
 	 */
 	public static int sumEven(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) % 2 == 0) {
+				sum+=list.get(i);
+			}
+		}
+		return sum;
 	} 
 
 	/**
@@ -289,7 +305,17 @@ public class Stage2 {
 	 * return 0 if the list is null
 	 */
 	public static int sumOdd(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) % 2 != 0) {
+				sum+=list.get(i);
+			}
+		}
+		return sum;
 	} 
 
 	/**
@@ -299,7 +325,17 @@ public class Stage2 {
 	 * return 0 if the list is null
 	 */
 	public static int sumPositives(ArrayList<Integer> list) {
-		return 0; //to be completed
+		if(list == null) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) > 0) {
+				sum+=list.get(i);
+			}
+		}
+		return sum;
 	} 	
 
 	/**
@@ -310,7 +346,17 @@ public class Stage2 {
 	 * return 0 if the list is null
 	 */
 	public static int sumMultiples(ArrayList<Integer> list, int n) {
-		return 0; //to be completed
+		if(list == null) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i) % n == 0) {
+				sum+=list.get(i);
+			}
+		}
+		return sum;
 	}
 
 	/**
@@ -321,7 +367,18 @@ public class Stage2 {
 	 * return 0 if the list is null
 	 */
 	public static int sumFactors(ArrayList<Integer> list, int n) {
-		return 0; //to be completed
+		if(list == null) {
+			return 0;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(n % list.get(i) == 0) {
+				sum+=list.get(i);
+			}
+			
+		}
+		return sum;
 	}
 
 	/**
