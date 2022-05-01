@@ -242,8 +242,19 @@ public class Stage2 {
 	 * TIP: using the enhanced for loop will make your life much easier!
 	 */
 	public static int countSquares(ArrayList<Rectangle> list) {
-		return 0; //to be completed
+		if(list == null|| list.size() == 0) {
+			return 0;
+		}
+		int isSquare = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i).isSquare()) {
+				isSquare++;
+			}
+		}
+		return isSquare;
 	}
+	
+	
 
 	/**
 	 * change each item of the list to its square.

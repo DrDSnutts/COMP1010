@@ -1,5 +1,6 @@
 package practicePackage._05_arrayList.attempts;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import serviceClasses.MathService;
 import serviceClasses.Rectangle;
@@ -274,7 +275,21 @@ public class Stage3 {
 	 * return false if either of list passed is null
 	 */
 	public static boolean identical(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return false; //to be completed
+		if(a == null || b == null || a.size() == 0 || b.size() == 0 || a.size() != b.size()) {
+			return false;
+		}
+		
+		int sameCount = 0;
+		for(int i = 0; i<a.size(); i++) {
+			if(a.get(i) == b.get(i)) {
+				sameCount++;
+			}
+		}
+		
+		if(sameCount >= a.size()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -286,7 +301,15 @@ public class Stage3 {
 	 * return false if either of list passed is null
 	 */
 	public static boolean contains(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return false; //to be completed
+		if(a == null || b == null) {
+			return false;
+		}
+		
+		if(a.containsAll(b)) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -298,7 +321,15 @@ public class Stage3 {
 	 * return false if either of list passed is null
 	 */
 	public static boolean same(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return false; //to be completed
+		if(a == null || b == null || a.size() != b.size()) {
+			return false;
+		}
+		
+		if(a.containsAll(b)) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -310,7 +341,16 @@ public class Stage3 {
 	 * return null if either of the list passed is null
 	 */
 	public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
-		return null; //to be completed
+		if(a == null || b == null) {
+			return null;
+		}
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		
+		arr.addAll(a);
+		arr.addAll(a.size(), b);
+		return arr;
+		
 	}
 
 	/**
@@ -320,7 +360,15 @@ public class Stage3 {
 	 * return null if n is less than 0
 	 */
 	public static ArrayList<Integer> generate(int n) {
-		return null; //to be completed
+		if(n<0) {
+			return null;
+		}
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		for(int i = 0; i<n; i++) {
+			arr.add(i, i+1);
+		}
+		return arr;
 	}
 
 	/**
@@ -330,8 +378,17 @@ public class Stage3 {
 	 * return null if list passed is null,
 	 * return empty list if list passed is empty
 	 */
-	public static ArrayList<Integer> getReverse(ArrayList<Integer> list) {
-		return null; //to be completed
+	public static ArrayList<Integer> getReverse(ArrayList<Integer> list) {	
+		if(list == null) {
+			return null;
+		}
+		
+		ArrayList<Integer> revArr = new ArrayList<Integer>();
+		
+		for(int i = list.size()-1; i>=0; i--) {
+			revArr.add(list.get(i));
+		}
+		return revArr;
 	}
 
 	/**
