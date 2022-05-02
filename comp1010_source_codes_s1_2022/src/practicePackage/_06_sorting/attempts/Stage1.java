@@ -9,7 +9,16 @@ public class Stage1 {
 	 *         indices are invalid, return null.
 	 */
 	public static int[] swap(int[] data, int idx1, int idx2) {
-		return null; //to be completed
+		if(idx1 < 0 || idx2 < 0 || idx1 >= data.length || idx2 >= data.length) {
+			return null;
+		}
+		
+		int tempidx1 = data[idx1];
+		
+		data[idx1] = data[idx2];
+		data[idx2] = tempidx1;
+		
+		return data;
 	}
 
 	/**
@@ -20,7 +29,16 @@ public class Stage1 {
 	 *         90, 5, 70} would return 3 (90 > 5). If data is invalid, return -1;
 	 */
 	public static int partSorted(int[] data) {
-		return -1; //to be completed
+		if(data == null || data.length == 0) {
+			return -1;
+		}
+		
+		for(int i = 0; i<data.length-1; i++) {
+			if(data[i] > data[i+1]) {
+				return i+1;
+			}
+		}
+		return data.length;
 	}
 
 	/**
@@ -29,6 +47,15 @@ public class Stage1 {
 	 * @return true if the sorted array contains any duplicates, false otherwise.
 	 */
 	public static boolean duplicates(int[] data) {
-		return false; //to be completed
+		if(data == null || data.length == 0) {
+			return false;
+		}
+		
+		for(int i = 0; i<data.length-1; i++) {
+			if(data[i] == data[i+1]) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

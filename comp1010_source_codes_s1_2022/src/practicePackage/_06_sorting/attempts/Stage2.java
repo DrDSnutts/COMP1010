@@ -8,7 +8,23 @@ public class Stage2 {
 	 *         sorted position.
 	 */
 	public static int[] shiftToRightPlace(int[] data, int idx) {
-		return null; //to be completed
+		if (data == null || data.length == 1) {
+			 return data;
+		 }
+		 
+		 for(int i = 1; i<data.length; i++) {
+			 int backup = data[i]; //keep a copy of element to insert
+			 
+			 int k = i-1; //pointer to previous position to possibly shift
+			 while (k>=0 && data[k] > backup) {
+				 data[k+1] = data[k]; //shift of the element to the right
+				 k--;
+			 }
+			 
+			 data[k+1] = backup; //positioning smallest element to correct position
+			
+		 }
+		 return data;
 	}
 
 	/**
