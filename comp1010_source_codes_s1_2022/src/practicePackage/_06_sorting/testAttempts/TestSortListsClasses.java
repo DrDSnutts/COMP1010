@@ -28,7 +28,6 @@ public class TestSortListsClasses {
 	public void testInsert() {
 		ArrayList<Integer> list = new ArrayList<>();
 		assertNull(SortLists.insert(null, 10));
-		assertNotNull(SortLists.insert(list, 10));
 		assertEquals("[10]", SortLists.insert(list, 10).toString());
 		assertEquals("[10, 70]", SortLists.insert(list, 70).toString());
 		assertEquals("[10, 20, 70]", SortLists.insert(list, 20).toString());
@@ -53,7 +52,6 @@ public class TestSortListsClasses {
 	@Test
 	public void testSortInput() {
 		assertNull(SortLists.sortInput(null, 1));
-		assertNotNull(SortLists.sortInput(new int[][] {}, 3));
 		assertEquals("[[], [], []]", SortLists.sortInput(new int[][] {}, 3).toString());
 
 		int[][] data = new int[][] { { 1, 3 }, { 2, 1 }, { 2, 0 } };

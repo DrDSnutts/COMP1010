@@ -6,7 +6,8 @@ public class Unit {
 	int students;
 
 	public Unit(String name, int students) {
-		//to be completed
+		this.name = name;
+		this.students = students;
 	}
 
 	/**
@@ -19,7 +20,24 @@ public class Unit {
 	 *
 	 */
 	public int compareTo(Unit other) {
-		return -1; //to be completed
+		
+		if(this.students == other.students && this.name == other.name) {
+			return 0;
+		}
+		if(this.students > other.students) {
+			return 1;
+		}
+		
+		if(this.students == other.students) {
+			if(this.name.equals("COMP1010")) {
+				return 1;
+			}
+			else {
+				return -1;
+			}
+		}
+		
+		return -1;
 	}
 	
 	public String toString() {
