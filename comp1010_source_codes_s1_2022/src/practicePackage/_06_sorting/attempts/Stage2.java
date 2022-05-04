@@ -35,19 +35,16 @@ public class Stage2 {
 			 return data;
 		 }
 		
-		for(int i = 0; i<data.length; i++) {
-			int minIndex = i;
+		
+		for(int i = idx; i<data.length; i++) {
+			int backup = data[i];
 			
-			for(int j = i+1; j<data.length; j++) {
-				if(data[i] > data[j]) {
-					minIndex = j;
-				}
+			if(data[i] < data[idx]) {
+				data[i] = data[idx];
+				data[idx] = backup;
 			}
-			int temp = data[i];
-			data[i]= data[minIndex];
-			data[minIndex] = temp;
 		}
-		return data;
+			return data;
 	}
 
 	/**
@@ -68,7 +65,25 @@ public class Stage2 {
 	 *         the number that occurs first. If data is invalid or empty, return -1.
 	 */
 	public static int mostCommon(int[] data) {
-		return -1; //to be completed
+		if (data == null || data.length == 0) {
+			 return -1;
+		 }
+		
+		int maxCount = 1, res = data[0];
+        int currCount = 1;
+ 
+        for (int i = 1; i < data.length; i++) {
+            if (data[i] == data[i - 1])
+                currCount++;
+            else
+                currCount = 1;
+ 
+            if (currCount > maxCount) {
+                maxCount = currCount;
+                res = data[i - 1];
+            }
+        }
+        return res;
 	}
 
 	/**
@@ -78,7 +93,32 @@ public class Stage2 {
 	 *         otherwise.
 	 */
 	public static boolean isSorted(int[] data) {
-		return false; //to be completed
+		if (data == null || data.length == 0) {
+			 return false;
+		 }
+		if(data.length == 1) {
+			return true;
+		}
+		
+		int ascCount = 0;
+		int descCount = 0;
+		
+		for(int i = 0; i<data.length-1; i++) {
+			if(data[i] <= data[i+1]) {
+				ascCount++;
+			}
+			if(data[i] >= data[i+1]) {
+				descCount++;
+			}
+		}
+		
+		if(ascCount >= data.length-1) {
+			return true;
+		}
+		if(descCount >= data.length-1) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -88,7 +128,32 @@ public class Stage2 {
 	 *         is sorted is ascending order. If the array is invalid, return null.
 	 */
 	public static int[] insertAtRightPlace(int[] data, int val) {
-		return null; //to be completed
+		if (data == null || data.length == 0) {
+			 return null;
+		 }
+		
+		int arr[] = new int[data.length + 1];
+		
+		for(int i = 0; i<data.length; i++) {
+			arr[i] = data[i];
+		}
+		arr[arr.length-1] = val;
+		
+		for(int i = 0; i<arr.length-1; i++) {
+			int minIndex = i; 
+			
+			for (int k=i+1; k<arr.length; k++) {
+				if (arr[k] < arr[minIndex]) {
+					minIndex = k; 
+				}
+			}
+			
+			int temp = arr[i]; 
+			arr[i] = arr[minIndex]; 
+			arr[minIndex] = temp; 
+		}
+		
+		return arr;
 	}
 
 	/**
@@ -98,7 +163,20 @@ public class Stage2 {
 	 *         the data.
 	 */
 	public static int[] sort(int[] data) {
-		return null; //to be completed
+		for(int i = 0; i<data.length-1; i++) {
+			int minIndex = i; 
+			
+			for (int k=i+1; k<data.length; k++) {
+				if (data[k] < data[minIndex]) { 
+					minIndex = k; 
+				}
+			}
+			
+			int temp = data[i]; 
+			data[i] = data[minIndex];
+			data[minIndex] = temp; 
+		}
+		return data;
 	}
 
 	/**
