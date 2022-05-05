@@ -9,7 +9,36 @@ public class Stage3 {
 	 *         either array is invalid (Null).
 	 */
 	public static int[] merge(int[] a, int[] b) {
-		return null; //to be completed
+		if (a == null || b == null) {
+			return null;
+		}
+		
+		int arr[] = new int[a.length+b.length];
+		
+		for(int i = 0; i<a.length; i++) {
+			arr[i] = a[i];
+		}
+		
+		for(int i = 0; i<b.length; i++) {
+			arr[a.length + i] = b[i];
+		}
+		
+		for(int i = 0; i<arr.length-1; i++) {
+			int minIndex = i; 
+			
+			for (int k=i+1; k<arr.length; k++) {
+				if (arr[k] < arr[minIndex]) {
+					minIndex = k; 
+				}
+			}
+			
+			int temp = arr[i]; 
+			arr[i] = arr[minIndex]; 
+			arr[minIndex] = temp; 
+		}
+		
+		return arr;
+		
 	}
 
 	/**
@@ -19,7 +48,8 @@ public class Stage3 {
 	 *         the array.
 	 */
 	public static Unit[] sort(Unit[] data) {
-		return null; //to be completed
+		return null;
+		
 	}
 
 	/**
