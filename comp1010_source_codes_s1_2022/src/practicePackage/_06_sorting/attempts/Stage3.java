@@ -82,7 +82,7 @@ public class Stage3 {
 	 * 
 	 * @param data
 	 * @return the array after it has been sorted so that all the odd numbers are
-	 *         sorted before the even numbers. The two groups should be sorted in
+	 *         sorted after the even numbers. The two groups should be sorted in
 	 *         ascending order.
 	 */
 	public static int[] sortOddEven(int[] data) {

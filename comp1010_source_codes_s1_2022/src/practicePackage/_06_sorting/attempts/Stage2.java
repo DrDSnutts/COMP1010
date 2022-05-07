@@ -35,16 +35,8 @@ public class Stage2 {
 			 return data;
 		 }
 		
+		return null;
 		
-		for(int i = idx; i<data.length; i++) {
-			int backup = data[i];
-			
-			if(data[i] < data[idx]) {
-				data[i] = data[idx];
-				data[idx] = backup;
-			}
-		}
-			return data;
 	}
 
 	/**
