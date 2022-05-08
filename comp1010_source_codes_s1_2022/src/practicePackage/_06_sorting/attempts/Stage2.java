@@ -217,9 +217,10 @@ public class Stage2 {
 			 int backup = data[i];
 	
 			 int k = i; 
-			 for ( ; k>0 && backup < data[k-1]; k = k-1) {
+			 while(k>0 && backup <= data[k-1]) {
 				
 				 data[k] = data[k-1];
+				 k--;
 				 count++;
 				 
 			 }
