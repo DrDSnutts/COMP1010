@@ -29,6 +29,19 @@ public class RecursionStringService {
 	public static void main(String[] args) {
 		System.out.println(reverse("hello world"));
 		System.out.println(isPalindrome("racecar"));
+		
+		System.out.println(foo("Appealing"));
 	}
 
+	public static String foo(String s) {
+		   if(s.isEmpty()) {
+		      return s;
+		   }
+		   if(s.length()%2 == 0) {
+		      return s.charAt(0) + foo(s.substring(2));
+		   }
+		   return foo(s.substring(1));
+		}
+	
+	
 }

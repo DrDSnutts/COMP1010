@@ -112,12 +112,10 @@ public class Stage3 {
 			return null;
 		}
 
-		int positiveCount = 0;
-
 		for(int i = 0; i<data.length; i++) {
 			if(data[i] >= 0) {
 
-				positiveCount++;
+		
 				int minIndex = i;
 
 				for (int k=i+1; k<data.length; k++) {
