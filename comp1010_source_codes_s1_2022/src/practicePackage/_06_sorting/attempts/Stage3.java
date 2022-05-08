@@ -48,8 +48,19 @@ public class Stage3 {
 	 *         the array.
 	 */
 	public static Unit[] sort(Unit[] data) {
-		return null;
+		if(data == null) {
+			return null;
+		}
 		
+		for(int i = 0; i<data.length-1; i++) {
+			Unit backup = data[i];
+			
+			if(data[i].compareTo(data[i+1]) == -1){
+				data[i] = data[i+1];
+				data[i+1] = backup;
+			}
+		}
+		return data;
 	}
 
 	/**
@@ -64,7 +75,29 @@ public class Stage3 {
 	 *         ascending order.
 	 */
 	public static int[] sortTwoArrays(int[] data, int[] weight) {
-		return null; //to be completed
+		if(data == null || weight == null) {
+			return null;
+		}
+		if(data.length != weight.length) {
+			return null;
+		}
+		
+		for(int i = 0; i<data.length; i++) {
+			int minIndex = i; 
+
+			for (int k=i+1; k<data.length; k++) {
+				if (weight[k] < weight[minIndex]) { 
+					minIndex = k; 
+				}
+			}
+
+			int temp = data[i]; 
+			data[i] = data[minIndex];
+			data[minIndex] = temp; 
+			
+		}
+		
+		return data;
 	}
 
 	/**
@@ -75,7 +108,32 @@ public class Stage3 {
 	 *         be sorted in ascending order.
 	 */
 	public static int[] sortPositiveNegative(int[] data) {
-		return null; //to be completed
+		if(data == null) {
+			return null;
+		}
+
+		int positiveCount = 0;
+
+		for(int i = 0; i<data.length; i++) {
+			if(data[i] >= 0) {
+
+				positiveCount++;
+				int minIndex = i;
+
+				for (int k=i+1; k<data.length; k++) {
+					if (data[k] < data[minIndex]) { 
+						minIndex = k; 
+					}
+				}
+
+				int temp = data[i]; 
+				data[i] = data[minIndex];
+				data[minIndex] = temp; 
+			}
+		}
+
+		
+		return data;
 	}
 
 	/**
@@ -93,8 +151,45 @@ public class Stage3 {
 	 * @param data Given a 2D array, return a 1D array containing the sorted values.
 	 */
 	public static int[] sort2Dinto1D(int[][] data) {
-		return null; //to be completed
+		if(data == null) {
+			return null;
+		}
+		
+		int length = 0;
+		for(int i = 0; i<data.length; i++) {
+			for(int j = 0; j<data[i].length; j++) {
+				length++;
+			}
+		}
+		
+		int[] arr = new int[length];
+		int z = 0;
+		
+		for(int i =0; i<data.length; i++) {	
+			for(int j = 0; j<data[i].length; j++) {
+				arr[z] = data[i][j];
+				z++;
+				
+			}
+		}
+		
+		for(int i = 0; i<arr.length; i++) {
+			int minIndex = i; 
+			
+			for (int k=i+1; k<arr.length; k++) {
+				if (arr[k] < arr[minIndex]) { 
+					minIndex = k; 
+				}
+			}
+			
+			int temp = arr[i]; 
+			arr[i] = arr[minIndex];
+			arr[minIndex] = temp; 
+		}
+		
+		return arr;
 	}
+		
 
 	/**
 	 * 
