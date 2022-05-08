@@ -180,7 +180,24 @@ public class Stage2 {
 	 *         Return -1 if data is invalid.
 	 */
 	public static int bubbleSortCount(int[] data) {
-		return -1; //to be completed
+       if(data == null) {
+    	   return -1;
+       }
+       
+       int length = data.length;
+       int temp;
+       int count = 0;
+       for (int i = 0; i < length; i++) {
+           for (int j = 1; j < length-i; j++) {
+               if (data[j - 1] > data[j]) {
+                   temp = data[j-1];
+                   data[j-1] = data[j];
+                   data[j] = temp;
+                   count++;
+               }
+           }
+       }
+       return count;
 	}
 
 	/**
@@ -190,7 +207,26 @@ public class Stage2 {
 	 *         insertion sort. Return -1 if data is invalid.
 	 */
 	public static int insertionSortCount(int[] data) {
-		return -1; //to be completed
+		 if (data == null || data.length == 1) {
+			 return - 1;
+		 }
+		 
+		 int count = 0;
+		 
+		 for(int i = 1; i<data.length; i++) {
+			 int backup = data[i];
+	
+			 int k = i; 
+			 for ( ; k>0 && backup < data[k-1]; k = k-1) {
+				
+				 data[k] = data[k-1];
+				 count++;
+				 
+			 }
+			 
+			 data[k] = backup; 
+		 }
+		 return count;
 	}
 
 	
