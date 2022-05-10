@@ -174,17 +174,27 @@ public class CustomArrayList {
 			return null;
 		}
 		
+		CustomArrayList arr = new CustomArrayList();
 		
-		
-		for(int i = 0; i<nItems; i++) { 
-			int temp = data[i];
-			if(data[i] == oldValue) {
-				data[i] = newValue;
-				
-			}
+		for(int i = 0; i<nItems; i++) {
+			if(data[i] == oldValue)
+			arr.add(i);
 		}
 		
-		return null;
+		int count = 0;
+		for(int i = 0; i<nItems; i++) { 
+			if(data[i] == oldValue) {
+				data[i] = newValue;
+			}
+			else {
+				count++;
+			}
+		}
+		if(count >= nItems) {
+			return arr;
+		}
+		
+		return arr;
 	}
 
 	/**
@@ -199,7 +209,11 @@ public class CustomArrayList {
 	 * 5 (after the last item)
 	 */ 
 	public boolean add(int idx, int value) {
-		return false; //to be completed
+		if(idx >= nItems || idx < 0) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -213,8 +227,18 @@ public class CustomArrayList {
 	 * 4 (last item)	
 	 */
 	public Integer remove(int idx) {
-		return null; //to be completed
-	}
+		if(idx >= nItems || idx < 0) {
+			return null;
+		}
+		
+		int removed = data[idx];
+		
+		
+		
+		return removed;
+		
+		
+		}
 
 	/**
 	 * 
@@ -249,7 +273,24 @@ public class CustomArrayList {
 	 * return false
 	 */
 	public boolean identical(CustomArrayList other) {
-		return false; //to be completed
+		if(this.nItems == 0) {
+			return false;
+		}
+		
+		if(this.isEmpty() == true && other.isEmpty() == true) {
+			return true;
+		}
+		
+		int count = 0;
+		for(int i = 0; i<nItems; i++) {
+			if(this.data[i] == other.data[i]) {
+				count++;
+			}
+		}
+		if(count >= nItems) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
