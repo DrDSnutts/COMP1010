@@ -69,7 +69,12 @@ public class CustomArrayList {
 	 * grow the array by 5 items
 	 */
 	public void grow() {
-		//to be completed
+		int[] temp = new int [data.length+5];
+		
+		for(int i = 0; i<data.length; i++) {
+			temp[i] = data[i];
+		}
+		data = temp;
 	}
 
 	/**
@@ -77,7 +82,16 @@ public class CustomArrayList {
 	 * @param n
 	 */
 	public void grow(int n) {
-		//to be completed
+		if(n <= 0) {
+			return;
+		}
+		
+		int[] temp = new int [data.length+n];
+		
+		for(int i = 0; i<data.length; i++) {
+			temp[i] = data[i];
+		}
+		data = temp;
 	}
 
 	/**
@@ -86,7 +100,12 @@ public class CustomArrayList {
 	 * @param value
 	 */
 	public void add(int value) {
-		//to be completed
+		if(isFull()) {
+			grow(1);
+		}
+		
+		data[nItems] = value;
+		nItems++;
 	}
 
 	/**
@@ -94,8 +113,13 @@ public class CustomArrayList {
 	 * @param idx
 	 * @return item at index idx if there, null otherwise
 	 */
-	public Integer get(int idx) {
-		return null; //to be completed
+	public Integer get(int idx) {	
+		if(idx >= nItems || data == null || idx<0 || nItems == 0) {
+			return null;
+		}
+		
+		int item = data[idx];
+		return item;
 	}
 
 	/**
@@ -108,7 +132,13 @@ public class CustomArrayList {
 	 * return null if the index is invalid
 	 */
 	public Integer set(int idx, int newValue) {
-		return null; //to be completed
+		if(idx >= nItems || idx<0) {
+			return null;
+		}
+		
+		int temp = data[idx];
+		data[idx] = newValue;
+		return temp;
 	}
 
 	/**
@@ -119,7 +149,17 @@ public class CustomArrayList {
 	 * and is replaced, -1 otherwise
 	 */
 	public int replace(int oldValue, int newValue) {
-		return 0; //to be completed
+		if(data == null|| nItems == 0) {
+			return -1;
+		}
+		
+		for(int i = 0; i<nItems; i++) { 
+			if(data[i] == oldValue) {
+				data[i] = newValue;
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -130,7 +170,21 @@ public class CustomArrayList {
 	 * where oldValue occurred and is now replaced by newValue
 	 */
 	public CustomArrayList replaceAll(int oldValue, int newValue) {
-		return null; //to be completed 
+		if(data == null|| nItems == 0) {
+			return null;
+		}
+		
+		
+		
+		for(int i = 0; i<nItems; i++) { 
+			int temp = data[i];
+			if(data[i] == oldValue) {
+				data[i] = newValue;
+				
+			}
+		}
+		
+		return null;
 	}
 
 	/**
