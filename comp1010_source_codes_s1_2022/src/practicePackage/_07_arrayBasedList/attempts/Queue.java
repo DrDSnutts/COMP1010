@@ -8,7 +8,8 @@ public class Queue {
 	 * initialize array to an empty array and size to 0
 	 */
 	public Queue() {
-		// To be completed
+		size = 0;
+		items = new String[0];
 	}
 	
 	/**
@@ -17,7 +18,10 @@ public class Queue {
 	 * (note that the array may be of size 5 or 10 or ... and still be empty)
 	 */
 	public boolean isEmpty() {
-		return false; //to be completed
+		if(items.length == 0) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -26,14 +30,22 @@ public class Queue {
 	 * That is, the queue is at capacity
 	 */
 	public boolean isFull() {
-		return false; //to be completed
+		if(size == items.length) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
 	 * increase the capacity of the queue by 5
 	 */
 	public void grow() {
-		return; //to be completed
+		String[] temp = new String [items.length+5];
+		
+		for(int i = 0; i<items.length; i++) {
+			temp[i] = items[i];
+		}
+		items = temp;
 	}
 	
 	/**
@@ -44,7 +56,18 @@ public class Queue {
 	 * @param s
 	 */
 	public void insert(String s) {
-		return; //to be completed
+		if (s == null) {
+			return;
+		}
+		
+		String[] temp = new String [items.length+1];
+		
+		for(int i = 0; i<items.length; i++) {
+			temp[i] = items[i];
+		}
+		temp[temp.length-1] = s; 
+		
+		items = temp;
 	}
 	
 	/**

@@ -231,11 +231,19 @@ public class CustomArrayList {
 			return null;
 		}
 		
-		int removed = data[idx];
+		CustomArrayList temp = new CustomArrayList();
 		
+		for(int i = 0; i<data.length; i++) {
+			if(i != idx) {
+				this.data[i] = temp.data[i];
+			}
+		}
 		
+		for(int i = 0; i<nItems; i++) {
+			temp.data[i] = this.data[i];
+		}
 		
-		return removed;
+		return data[idx];
 		
 		
 		}
@@ -273,12 +281,13 @@ public class CustomArrayList {
 	 * return false
 	 */
 	public boolean identical(CustomArrayList other) {
-		if(this.nItems == 0) {
-			return false;
-		}
 		
 		if(this.isEmpty() == true && other.isEmpty() == true) {
 			return true;
+		}
+		
+		if(this.nItems == 0) {
+			return false;
 		}
 		
 		int count = 0;
@@ -307,7 +316,25 @@ public class CustomArrayList {
 	 * be [10,70,20,50,90]
 	 */
 	public CustomArrayList join(CustomArrayList other) {
-		return null; //to be completed
+		CustomArrayList arr = new CustomArrayList();
+		
+		if(this.nItems == 0 && other.nItems == 0) {
+			return arr;
+		}
+		
+		int length = this.nItems-1 + other.nItems-1;
+		int k = 0;
+		
+		for(int i = 0; i<length; i++) {
+			if(this.data[i] != 0) {
+				arr.data[i] = this.data[i];
+			}
+			if(other.data[i] != 0) {
+				arr.data[i+length/2] = other.data[k];
+				k++;
+			}
+		}
+		return arr;
 	}
 
 	/**
