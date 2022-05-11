@@ -8,6 +8,8 @@ public class Stack {
 	 * initialize array to an empty array and size to 0
 	 */
 	public Stack() {
+		size = 0;
+		items = new String[0];
 	}
 	
 	/**
@@ -16,6 +18,9 @@ public class Stack {
 	 * (note that the array may be of size 5 or 10 or ... and still be empty)
 	 */
 	public boolean isEmpty() {
+		if(size == 0) {
+			return true;
+		}
 		return false;
 	}
 	
@@ -25,6 +30,9 @@ public class Stack {
 	 * That is, the stack is at capacity
 	 */
 	public boolean isFull() {
+		if(size == items.length) {
+			return true;
+		}
 		return false;
 	}
 	
@@ -32,6 +40,13 @@ public class Stack {
 	 * increase the capacity of the stack by 5
 	 */
 	public void grow() {
+		String[] temp = new String[items.length+5];
+		
+		for(int i = 0; i<items.length; i++) {
+			temp[i] = items[i];
+		}
+		items = temp;
+		
 	}
 	
 	/**
@@ -42,6 +57,19 @@ public class Stack {
 	 * @param s
 	 */
 	public void push(String s) {
+		if(s == null) {
+			return;
+		}
+		
+		String[] temp = new String[items.length+1];
+		size = size+1;
+		
+		for(int i = 0; i<items.length; i++) {
+			temp[i] = items[i];
+		}
+		temp[temp.length-1] = s; 
+		
+		items = temp;
 	}
 	
 	/**
@@ -50,7 +78,22 @@ public class Stack {
 	 * return null if stack is empty.
 	 */
 	public String pop() {
-		return null;
+		if(size == 0) {
+			return null;
+		}
+		
+		String temp = items[0];
+		String[] tempArr = new String[items.length];
+		int j = 0;
+		
+		for(int i = 1; i<items.length; i++) {
+			tempArr[j] = items[i];
+			j++;
+		}
+		size = size-1;
+		items = tempArr;
+		
+		return temp;
 	}
 	
 	/**
@@ -59,7 +102,11 @@ public class Stack {
 	 * return null if stack is empty.
 	 */
 	public String top() {
-		return null;
+		if(size == 0) {
+			return null;
+		}
+		
+		return items[size-1];
 	}
 	
 	/**
@@ -69,7 +116,11 @@ public class Stack {
 	 * return null if there is no item at passed index.
 	 */
 	public String get(int idx) {
-		return null;
+		if(idx > size-1) {
+			return null;
+		}
+		
+		return items[idx];
 	}
 	
 	/**

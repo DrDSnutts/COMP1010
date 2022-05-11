@@ -61,6 +61,7 @@ public class Queue {
 		}
 		
 		String[] temp = new String [items.length+1];
+		size = size+1;
 		
 		for(int i = 0; i<items.length; i++) {
 			temp[i] = items[i];
@@ -76,7 +77,22 @@ public class Queue {
 	 * return null if queue is empty.
 	 */
 	public String remove() {
-		return ""; //to be completed
+		if(size == 0) {
+			return null;
+		}
+		
+		String temp = items[0];
+		String[] tempArr = new String[items.length];
+		int j = 0;
+		
+		for(int i = 1; i<items.length; i++) {
+			tempArr[j] = items[i];
+			j++;
+		}
+		size = size-1;
+		items = tempArr;
+		
+		return temp;
 	}
 	
 	/**
@@ -85,7 +101,11 @@ public class Queue {
 	 * return null if queue is empty.
 	 */
 	public String front() {
-		return ""; //to be completed
+		if(size == 0) {
+			return null;
+		}
+		
+		return items[size-1];
 	}
 	
 	/**
@@ -95,7 +115,11 @@ public class Queue {
 	 * return null if there is no item at passed index.
 	 */
 	public String get(int idx) {
-		return ""; //to be completed
+		if(idx > size-1) {
+			return null;
+		}
+		
+		return items[idx];
 	}
 	
 	/**
