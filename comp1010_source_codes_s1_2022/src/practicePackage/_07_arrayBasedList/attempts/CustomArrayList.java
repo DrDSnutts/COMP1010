@@ -232,20 +232,20 @@ public class CustomArrayList {
 		}
 		
 		CustomArrayList temp = new CustomArrayList();
-		
-		for(int i = 0; i<data.length; i++) {
-			if(i != idx) {
-				this.data[i] = temp.data[i];
-			}
-		}
+		temp.nItems = this.nItems - 1;
+		int remove = data[idx];
 		
 		for(int i = 0; i<nItems; i++) {
-			temp.data[i] = this.data[i];
+			if(data[i] != remove) {
+				temp.data[i] = data[i];
+			}
 		}
+		this.nItems = this.nItems - 1;
 		
-		return data[idx];
-		
-		
+		for(int j = 0; j<nItems; j++) {
+			data[j] = temp.data[j];
+		}
+		return remove;
 		}
 
 	/**
@@ -318,21 +318,18 @@ public class CustomArrayList {
 	public CustomArrayList join(CustomArrayList other) {
 		CustomArrayList arr = new CustomArrayList();
 		
-		if(this.nItems == 0 && other.nItems == 0) {
-			return arr;
+		arr.nItems = this.nItems + other.nItems;
+		if(arr.nItems > 10) {
+			arr.grow(arr.nItems-10);
 		}
 		
-		int length = this.nItems-1 + other.nItems-1;
+		for(int i = 0; i<this.nItems; i++) {
+			arr.data[i] = this.data[i];
+		}
 		int k = 0;
-		
-		for(int i = 0; i<length; i++) {
-			if(this.data[i] != 0) {
-				arr.data[i] = this.data[i];
-			}
-			if(other.data[i] != 0) {
-				arr.data[i+length/2] = other.data[k];
-				k++;
-			}
+		for(int j = this.nItems; j<arr.nItems; j++) {
+			arr.data[j] = other.data[k];
+			k++;
 		}
 		return arr;
 	}
@@ -385,11 +382,44 @@ public class CustomArrayList {
 	 * return false
 	 */
 	public boolean same(CustomArrayList other) {
-		return false; //to be completed
+		if(this.nItems != other.nItems) {
+			return false;
+		}
+		
+		int counter = 0;
+		for(int i = 0; i<nItems; i++) {
+			
+			for(int j = 0; j<nItems; j++) {
+				if(this.data[i] == other.data[j]) {
+					counter++;
+				}
+			}
+		}
+		
+		if(counter >= nItems) {
+			return true;
+		}
+		return false;
+		
 	}
 
 	//sort in ascending order
 	public void sort() {
-		//to be completed
+		if(nItems == 0 || data == null) {
+			return;
+		}
+		
+		for(int i = 0; i<nItems; i++) {
+			int minIndex = i;
+			
+			for(int k = i+1; k<nItems; k++) {
+				if(data[k] < data[minIndex]) {
+					minIndex = k;
+				}
+			}
+			int temp = data[i];
+			data[i] = data[minIndex];
+			data[minIndex] = temp;
+		}
 	}
 }
