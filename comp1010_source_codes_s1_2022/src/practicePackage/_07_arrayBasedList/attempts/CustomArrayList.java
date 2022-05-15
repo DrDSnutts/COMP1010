@@ -209,10 +209,27 @@ public class CustomArrayList {
 	 * 5 (after the last item)
 	 */ 
 	public boolean add(int idx, int value) {
-		if(idx >= nItems || idx < 0) {
+		if(idx > nItems || idx < 0) {
 			return false;
 		}
 		
+		CustomArrayList temp = new CustomArrayList();
+		
+		nItems = nItems + 1;
+		
+		temp.data[idx] = value;
+		int j = 0;
+		
+		for(int i = 0; i<nItems; i++) {
+			if(i != idx) {
+				temp.data[i] = data[j];
+				j++;
+			}
+		}
+		
+		for(int k = 0; k<nItems; k++){
+			data[k] = temp.data[k];
+		}
 		return true;
 	}
 
@@ -235,9 +252,12 @@ public class CustomArrayList {
 		temp.nItems = this.nItems - 1;
 		int remove = data[idx];
 		
+		int k = 0;
+		
 		for(int i = 0; i<nItems; i++) {
 			if(data[i] != remove) {
-				temp.data[i] = data[i];
+				temp.data[k] = data[i];
+				k++;
 			}
 		}
 		this.nItems = this.nItems - 1;

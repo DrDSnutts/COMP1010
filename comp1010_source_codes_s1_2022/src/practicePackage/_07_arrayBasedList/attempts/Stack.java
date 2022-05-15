@@ -1,5 +1,7 @@
 package practicePackage._07_arrayBasedList.attempts;
 
+import java.util.Arrays;
+
 public class Stack {
 	public int size;
 	public String[] items;
@@ -131,6 +133,9 @@ public class Stack {
 	 * Return "" if the stack is empty.
 	 */
 	public String toString() {
-		return null;
+		if(size == 0) {
+			return "";
+		}
+		return Arrays.toString(items);
 	}
 }
