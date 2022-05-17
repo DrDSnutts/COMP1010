@@ -58,7 +58,7 @@ public class MyLinkedList {
 	 * but not at indices [... -2, -1] or [4, 5, ..]
 	 */
 	public boolean itemExistsAt(int idx) {
-		return false; //to be completed
+		return idx >= 0 && idx < size();
 	}
 
 	/**
@@ -73,7 +73,11 @@ public class MyLinkedList {
 	 * but not at indices [... -2, -1] or [5, 6, ..]
 	 */
 	public boolean canInsertItemAt(int idx) {
-		return false; //to be completed
+		if(idx < 0 || idx > size()) {
+			   return false;
+			}
+
+		return true;
 	}
 
 	/**
@@ -95,7 +99,14 @@ public class MyLinkedList {
 	 * @return the sum of all items (0 if the list is empty)
 	 */
 	public int total() {
-		return 0; //to be completed
+		Node current = head;
+		int sum = 0;
+		while(current != null) {
+			sum += current.data;
+			current = current.next;
+		}
+		
+		return sum;
 	}
 
 	/**
@@ -103,7 +114,16 @@ public class MyLinkedList {
 	 * @return the sum of all positive items (0 if the list is empty)
 	 */
 	public int totalPositives() {
-		return 0; //to be completed
+		Node current = head;
+		int sum = 0;
+		while(current != null) {
+			if(current.data > 0) {
+				sum = sum + current.data;
+			}
+			current = current.next;		
+		}
+		
+		return sum;
 	}
 
 	/**
@@ -111,7 +131,16 @@ public class MyLinkedList {
 	 * @return the number of positive items (0 if the list is empty)
 	 */
 	public int countPositives() {
-		return 0; //to be completed
+		Node current = head;
+		int count = 0;
+		while(current != null) {
+			if(current.data > 0) {
+				count++;
+			}
+			current = current.next;		
+		}
+		
+		return count;
 	}
 
 	/**
@@ -120,7 +149,17 @@ public class MyLinkedList {
 	 * (0 if the list is empty)
 	 */
 	public int countOccurrences(int target) {
-		return 0; //to be completed
+		Node current = head;
+		int count = 0;
+		
+		while(current != null) {
+			if(current.data == target) {
+				count++;
+			}
+			current = current.next;
+		}
+		
+		return count;
 	}
 
 	/**
@@ -131,7 +170,10 @@ public class MyLinkedList {
 	 * [1,7,0,9], return false
 	 */
 	public boolean allPositives() {
-		return false; //to be completed
+		if(countPositives() >= size()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -141,7 +183,20 @@ public class MyLinkedList {
 	 * 
 	 */
 	public boolean allEven() {
-		return false; //to be completed
+		Node current = head;
+		int count = 0;
+		while(current != null) {
+			if(current.data % 2 == 0) {
+				count++;
+			}
+			current = current.next;		
+		}
+		
+		if(count >= size()) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -154,7 +209,20 @@ public class MyLinkedList {
 	 * return true if list is empty
 	 */
 	public boolean allInRange(int low, int high) {
-		return false; //to be completed
+		Node current = head;
+		int count = 0;
+		while(current != null) {
+			if(current.data >= low && current.data <= high) {
+				count++;
+			}
+			current = current.next;		
+		}
+		
+		if(count >= size()) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -167,7 +235,17 @@ public class MyLinkedList {
 	 * return false if list is empty
 	 */
 	public boolean containsInRange(int low, int high) {
-		return false; //to be completed
+		Node current = head;
+		
+		while(current != null) {
+			if(current.data >= low && current.data <= high) {
+				return true;
+			}
+			current = current.next;		
+		}
+		
+		
+		return false;
 	}
 
 	/**

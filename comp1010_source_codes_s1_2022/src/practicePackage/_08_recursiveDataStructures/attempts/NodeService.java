@@ -23,7 +23,14 @@ public class NodeService {
 	 * in this case, the method should return 80
 	 */
 	public static int sum(Node start) {
-		return 0;
+		Node current = start;
+		int sum = 0;
+		while(current != null) {
+			sum += current.data;
+			current = current.next;
+		}
+		
+		return sum;
 	}
 
 	//DO NOT MODIFY
@@ -50,7 +57,16 @@ public class NodeService {
 	 * @return sum of all odd numbers
 	 */
 	public static int sumOdd(Node start) {
-		return 0;
+		Node current = start;
+		int sum = 0;
+		while(current != null) {
+			if(current.data % 2 != 0) {
+				sum = sum + current.data;
+			}
+			current = current.next;		
+		}
+		
+		return sum;
 	}
 
 	/**
@@ -62,7 +78,13 @@ public class NodeService {
 	 * return 4
 	 */
 	public static int count(Node start) {
-		return 0;
+		int count = 0;
+		Node current = start;
+		while(current != null) {
+			count++;
+			current = current.next;
+		}
+		return count;
 	}
 
 	/**
@@ -71,7 +93,16 @@ public class NodeService {
 	 * @return number of positive numbers
 	 */
 	public static int countPositives(Node start) {
-		return 0;
+		Node current = start;
+		int count = 0;
+		while(current != null) {
+			if(current.data > 0) {
+				count++;
+			}
+			current = current.next;		
+		}
+		
+		return count;
 	}
 
 	/**
@@ -84,7 +115,16 @@ public class NodeService {
 	 * MathService.isPrime(number to check)
 	 */
 	public static int countPrimes(Node start) {
-		return 0;
+		Node current = start;
+		int count = 0;
+		while(current != null) {
+			if(MathService.isPrime(current.data)) {
+				count++;
+			}
+			current = current.next;		
+		}
+		
+		return count;
 	}
 
 	/**
@@ -101,6 +141,15 @@ public class NodeService {
 	 * result represents [6, 2, -8, 0]
 	 */
 	public static Node getFirstPositiveNode(Node start) {
+		Node current = start;
+		
+		while(current != null) {
+			if(current.data > 0) {
+				return current;
+			}
+			current = current.next;		
+		}
+		
 		return null;
 	}
 
@@ -141,8 +190,22 @@ public class NodeService {
 	 * return false
 	 */
 	public static boolean identical(Node start1, Node start2) {
-		return false; //to be completed
+		Node current1 = start1;
+		Node current2 = start2;
+		
+		while(current1 != null && current2 != null) {
+			if(current1.data != current2.data) {
+				return false;
+			}
+			
+			current1 = current1.next;
+			current2 = current2.next;
+		}
+		
+		return(current1 == null && current2 == null);
 	}
+	
+	
 	
 	/**
 	 * 
@@ -153,6 +216,19 @@ public class NodeService {
 	 * Note: first item (start) is considered to be at index 0
 	 */
 	public static Node getItemAt(Node start, int idx) {
+		Node current = start;	
+		int count = 0;
+		
+		while(current != null) {	
+				if(count == idx) {
+					return current;
+				}
+				
+			count++;
+			current = current.next;
+		}
+		
+		
 		return null;
 	}
 
@@ -163,7 +239,17 @@ public class NodeService {
 	 * of nodes starting at start. return null if start is null
 	 */
 	public static Node getTail(Node start) {
-		return null;
+		Node current = start;
+		
+		if(current == null) {
+			return null;
+		}
+		
+		while(current.next != null) {
+			current = current.next;
+		}
+		
+		return current;
 	}
 
 	/**
@@ -175,7 +261,17 @@ public class NodeService {
 	 * of nodes starting at start, and return true.
 	 */
 	public static boolean append(Node start, int val) {
-		return false;
+		Node current = start;
+		
+		if(current == null) {
+			return false;
+		}
+		
+		while(current.next != null) {
+			current = current.next;
+		}
+		current.next = new Node(val, null);
+		return true;
 	}
 	
 	/**
