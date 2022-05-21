@@ -11,14 +11,17 @@ public class Block {
 	public int id; // Number
 	public int rank; // position in the Chain
 	public Block next;
+	
 
 	// attributes to be added
 	public int size;
-
+	public Block head;
+	
 	public Block(int id, int rank) {	 	  			     		 		    		 	
 		this.id = id;
 		this.rank = rank;
 		this.next = null;
+		
 		// attributes to be added
 	}	 	  			     		 		    		 	
 	
@@ -26,10 +29,39 @@ public class Block {
 		this.id = id;
 		this.rank = rank;
 		this.next = next;
+		
 		// attributes to be added
-	}	 	  			     		 		    		 	
+	}	 	 
+	
 	
 	// Additional constructors may be added
+
+	public Block getHead() {
+		return head;
+	}
+	
+	public void sethead(Block head) {
+		this.head = head;
+	}
+	
+	public boolean isEmpty() {
+		if(head == null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void append(int id, int rank) {
+		if(head == null) {
+			head = new Block(id, rank);
+			return;
+		}
+		Block current = head;
+		while(current.next != null) {
+			current = current.next;
+		}
+		current.next = new Block(id, rank);
+	}
 
 	// DO NOT MODIFY
 	public String toString() {	 	  			     		 		    		 	
@@ -45,7 +77,16 @@ public class Block {
 	 * @return the number of Blocks in the Chain that has an even ID.
 	 */	 	  			     		 		    		 	
 	public int numberEvenBlocks() {	 	  			     		 		    		 	
-		return -1;
+		Block current = head;
+		int evenCount = 0;
+		
+		while(current != null) {
+			if(current.id % 2 == 0) {
+				evenCount++;
+			}
+			current = current.next;
+		}
+		return evenCount;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
