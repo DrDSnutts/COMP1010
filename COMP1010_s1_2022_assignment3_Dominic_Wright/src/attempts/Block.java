@@ -88,7 +88,6 @@ public class Block {
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 	  			     		 		    		 	
 		Block current = this;
-		int validCount = 0;
 		
 		while(current != null) {
 		
