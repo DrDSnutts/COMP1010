@@ -15,7 +15,6 @@ public class Block {
 
 	// attributes to be added
 	public int size;
-	public Block head;
 	
 	public Block(int id, int rank) {	 	  			     		 		    		 	
 		this.id = id;
@@ -36,32 +35,6 @@ public class Block {
 	
 	// Additional constructors may be added
 
-	public Block getHead() {
-		return head;
-	}
-	
-	public void sethead(Block head) {
-		this.head = head;
-	}
-	
-	public boolean isEmpty() {
-		if(head == null) {
-			return true;
-		}
-		return false;
-	}
-	
-	public void append(int id, int rank) {
-		if(head == null) {
-			head = new Block(id, rank);
-			return;
-		}
-		Block current = head;
-		while(current.next != null) {
-			current = current.next;
-		}
-		current.next = new Block(id, rank);
-	}
 
 	// DO NOT MODIFY
 	public String toString() {	 	  			     		 		    		 	
@@ -77,7 +50,7 @@ public class Block {
 	 * @return the number of Blocks in the Chain that has an even ID.
 	 */	 	  			     		 		    		 	
 	public int numberEvenBlocks() {	 	  			     		 		    		 	
-		Block current = head;
+		Block current = this;
 		int evenCount = 0;
 		
 		while(current != null) {
@@ -94,7 +67,16 @@ public class Block {
 	 * @return the number of Blocks in the Chain that has an odd ID.
 	 */	 	  			     		 		    		 	
 	public int numberOddBlocks() {	 	  			     		 		    		 	
-		return -1;
+		Block current = this;
+		int evenCount = 0;
+		
+		while(current != null) {
+			if(current.id % 2 != 0) {
+				evenCount++;
+			}
+			current = current.next;
+		}
+		return evenCount;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -105,9 +87,16 @@ public class Block {
 	 *         collatz chain should be treated as invalid.
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 	  			     		 		    		 	
+		Block current = this;
+		int validCount = 0;
+		
+		while(current != null) {
+		
+		}
 		return false;
-	}	 	  			     		 		    		 	
-
+	}
+		
+	
 	/**	 	  			     		 		    		 	
 	 * IMPORTANT: Even thought this method is in the Block class, it may be harder
 	 * than most in the Chain class.
