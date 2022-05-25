@@ -2,7 +2,7 @@
 * DO NOT REMOVE THIS COMMENT
 * STUDENT ID: 46358757
 * STUDENT NAME: Dominic Wright
-* []: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
+* [x]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
 */
 package attempts;
 

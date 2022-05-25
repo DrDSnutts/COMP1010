@@ -2,10 +2,9 @@
 * DO NOT REMOVE THIS COMMENT
 * STUDENT ID: 46358757
 * STUDENT NAME: Dominic Wright
-* []: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
+* [x]: add an 'x' inside the square brackets to declare that you haven't seen any other person's code
 */
 package attempts;
-
 
 public class Block {
 	public int id; // Number
@@ -32,7 +31,15 @@ public class Block {
 		// attributes to be added
 	}	 	 
 	
-	
+	public int size() {
+		int count = 0;
+		Block current = this;
+		while(current != null) {
+			count++;
+			current = current.next;
+		}
+		return count;
+	}
 	// Additional constructors may be added
 
 
@@ -68,15 +75,15 @@ public class Block {
 	 */	 	  			     		 		    		 	
 	public int numberOddBlocks() {	 	  			     		 		    		 	
 		Block current = this;
-		int evenCount = 0;
+		int oddCount = 0;
 		
 		while(current != null) {
 			if(current.id % 2 != 0) {
-				evenCount++;
+				oddCount++;
 			}
 			current = current.next;
 		}
-		return evenCount;
+		return oddCount;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -88,10 +95,27 @@ public class Block {
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 	  			     		 		    		 	
 		Block current = this;
+		int counter = 0;
+		int size = size();
 		
 		while(current != null) {
-		
+			if(current.id % 2 == 0) {
+				if(current.next.id == current.id/2) {
+					counter++;
+				}
+			}
+			if(current.id % 2 != 0) {
+				if(current.next.id == current.id*3+1) {
+					counter++;
+				}
+			}
+			current = current.next;
 		}
+		
+		if(counter >= size) {
+			return true;
+		}
+		
 		return false;
 	}
 		
