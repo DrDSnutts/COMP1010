@@ -95,21 +95,23 @@ public class Block {
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 	  			     		 		    		 	
 		Block current = this;
-		int counter = 0;
+		int counter = 1;
 		int size = size();
+		int temp = 0;
 		
 		while(current != null) {
+			
 			if(current.id % 2 == 0) {
-				if(current.next.id == current.id/2) {
-					counter++;
-				}
+				temp = current.id/2;
 			}
-			if(current.id % 2 != 0) {
-				if(current.next.id == current.id*3+1) {
-					counter++;
-				}
+			else {
+				temp = current.id*3+1;
+			}
+			if(temp == current.next.id) {
+				counter++;
 			}
 			current = current.next;
+			
 		}
 		
 		if(counter >= size) {

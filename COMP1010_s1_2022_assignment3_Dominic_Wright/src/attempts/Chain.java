@@ -39,8 +39,29 @@ public class Chain {
 	 *         null. There are 2 tests for this method, one to check your logic (P)
 	 *         and another to check the efficiency of the code (HD).
 	 */	 	  			     		 		    		 	
-	public Block createChain(int id) {	 	  			     		 		    		 	
-		return null;
+	public Block createChain(int id) {	
+		if(id < 1) {
+			return null;
+		}
+		
+		int rank = 1;
+		Block chain = new Block(id, rank);
+		
+		while(id > 1) {
+			if(id % 2 == 0) {
+				id = id/2;
+			}
+			else {
+				id = id*3+1;
+			}
+			rank++;
+			
+		}
+		
+		
+		return chain;
+		
+		
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
