@@ -11,6 +11,7 @@ public class Block {
 	public int rank; // position in the Chain
 	public Block next;
 	
+	
 
 	// attributes to be added
 	public int size;
@@ -95,29 +96,28 @@ public class Block {
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 	  			     		 		    		 	
 		Block current = this;
-		int counter = 1;
-		int size = size();
 		int temp = 0;
+		int counter = 0;
+		int size = size();
 		
-		while(current != null) {
-			
+		for(int i = 0; i<size-1; i++) {
 			if(current.id % 2 == 0) {
 				temp = current.id/2;
 			}
 			else {
 				temp = current.id*3+1;
 			}
+			
 			if(temp == current.next.id) {
 				counter++;
 			}
 			current = current.next;
-			
 		}
 		
-		if(counter >= size) {
+		if(counter >= size-1) {
 			return true;
-		}
-		
+		}	
+
 		return false;
 	}
 		

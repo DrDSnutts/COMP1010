@@ -7,8 +7,9 @@
 package attempts;
 
 public class Chain {
-	public Block head;
-	
+	public Block head = null;
+	public int rank = 1;
+	public Block tail = null;
 	// Attributes to be added
 
 	/**	 	  			     		 		    		 	
@@ -19,9 +20,9 @@ public class Chain {
 	 */	 	  			     		 		    		 	
 	public Chain() {	 	  			     		 		    		 	
 		head = null;
-		
 		// Attributes to be added
-	}	 	  			     		 		    		 	
+	}	 	  		
+	
 
 	// DO NOT MODIFY
 	public String toString() {	 	  			     		 		    		 	
@@ -43,26 +44,12 @@ public class Chain {
 		if(id < 1) {
 			return null;
 		}
+		return null;
 		
-		int rank = 1;
-		Block chain = new Block(id, rank);
-		
-		while(id > 1) {
-			if(id % 2 == 0) {
-				id = id/2;
-			}
-			else {
-				id = id*3+1;
-			}
-			rank++;
-			
-		}
-		
-		
-		return chain;
-		
-		
-	}	 	  			     		 		    		 	
+	}	
+	
+
+	
 
 	/**	 	  			     		 		    		 	
 	 * 
