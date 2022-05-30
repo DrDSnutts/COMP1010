@@ -58,10 +58,10 @@ public class Chain {
 			rank++;
 			chain.addToFront(id, rank);
 			
-			
+	
 		}
+		return chain;
 		
-		return chain.next;
 	}	
 	
 	
@@ -74,7 +74,13 @@ public class Chain {
 	 *         the code (HD).
 	 */	 	  			     		 		    		 	
 	public int size() {	 	  			     		 		    		 	
-		return 0;
+		int count = 0;
+		Block current = this.head;
+		while(current != null) {
+			count++;
+			current = current.next;
+		}
+		return count;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
@@ -83,7 +89,18 @@ public class Chain {
 	 *         any Blocks in the chain, return null.
 	 */	 	  			     		 		    		 	
 	public Block maxValue() {	 	  			     		 		    		 	
-		return null;
+		Block current = this.head;
+		int max = current.id;
+		Block maxBlock = current;
+		
+		while(current != null) {
+			if(current.id > max) {
+				max = current.id;
+				maxBlock = current;
+			}
+			current = current.next;
+		}
+		return maxBlock;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
