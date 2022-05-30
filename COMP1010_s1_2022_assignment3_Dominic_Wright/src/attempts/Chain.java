@@ -8,7 +8,7 @@ package attempts;
 
 public class Chain {
 	public Block head = null;
-	public int rank = 1;
+	public int rank;
 	public Block tail = null;
 	// Attributes to be added
 
@@ -41,25 +41,23 @@ public class Chain {
 	 *         null. There are 2 tests for this method, one to check your logic (P)
 	 *         and another to check the efficiency of the code (HD).
 	 */	 	  			     		 		    		 	
-	public Block createChain(int id) {	
+	public Block createChain(int id) {
+		
+		rank = 1;
+		Block chain = new Block(id, rank);
+		
 		if(id < 1) {
 			return null;
 		}
-		Block chain = new Block(id, rank);
-		this.head = chain;
 		
-		while(id > 1) {
-			if(id % 2 == 0) {
-				id = id/2;
-			}
-			else {
-				id = id*3+1;
-			}
-			rank++;
-			chain.addToFront(id, rank);
-			
-	
+		if(id % 2 == 0) {
+			id = id/2;
 		}
+		else {
+			id = id*3+1;
+		}
+		chain.next = new Block(id,rank);
+		
 		return chain;
 		
 	}	
