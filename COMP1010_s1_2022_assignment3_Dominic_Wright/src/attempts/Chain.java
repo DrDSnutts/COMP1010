@@ -9,7 +9,6 @@ package attempts;
 public class Chain {
 	public Block head = null;
 	public int rank;
-	public Block tail = null;
 	// Attributes to be added
 
 	/**	 	  			     		 		    		 	
@@ -20,7 +19,6 @@ public class Chain {
 	 */	 	  			     		 		    		 	
 	public Chain() {	 	  			     		 		    		 	
 		head = null;
-		tail = null;
 		// Attributes to be added
 	}	 	  		
 	
@@ -42,11 +40,30 @@ public class Chain {
 	 *         and another to check the efficiency of the code (HD).
 	 */	 	  			     		 		    		 	
 	public Block createChain(int id) {
-		
 		rank = 1;
-		Block chain = new Block(id, rank);
 		
 		if(id < 1) {
+			return null;
+		}
+		
+		if(head == null) {
+			return this.head = new Block(id, rank, createChainHelper(id,rank))	;		
+		}
+		
+		return null;
+		
+		
+		
+	}	
+	
+	
+	
+	public Block createChainHelper (int id, int rank) {
+		
+		if(id < 1) {
+			return null;
+		}
+		if(id == 1 ) {
 			return null;
 		}
 		
@@ -56,14 +73,11 @@ public class Chain {
 		else {
 			id = id*3+1;
 		}
-		chain.next = new Block(id,rank);
+		rank++;
 		
-		return chain;
+		return new Block(id,rank, createChainHelper(id,rank));
 		
-	}	
-	
-	
-	
+	}
 
 	/**	 	  			     		 		    		 	
 	 * 
