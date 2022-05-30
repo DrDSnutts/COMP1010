@@ -42,6 +42,7 @@ public class Chain {
 	 */	 	  			     		 		    		 	
 	public Block createChain(int id) {
 		rank = 1;
+		size = 1;
 		
 		if(id < 1) {
 			return null;
@@ -54,6 +55,7 @@ public class Chain {
 	
 	
 	public Block createChainHelper (int id, int rank) {
+		
 		
 		if(id < 1) {
 			return null;
@@ -69,6 +71,7 @@ public class Chain {
 			id = id*3+1;
 		}
 		rank++;
+		size++;
 	
 		
 		return new Block(id,rank, createChainHelper(id,rank));
@@ -81,26 +84,43 @@ public class Chain {
 	 *         one to check your logic (P) and another to check the efficiency of
 	 *         the code (HD).
 	 */	 	  			     		 		    		 	
-	public int size() {	 	  			     		 		    		 	
-		return count(this.head);
-	}	 	
-	
-	public int count(Block block) {
-		if(block == null) {
-			return 0;
-		}
-		size = 1 + count(block.next);
+	public int size() {	 	 
 		return size;
+		
 	}
+//		return count(this.head);
+//	}	 	
+//	
+//	public int count(Block block) {
+//		if(block == null) {
+//			return 0;
+//		}
+//		size = 1 + count(block.next);
+//		return size;
+//	}
 
 	/**	 	  			     		 		    		 	
 	 * 
 	 * @return the Block that contains the highest id in the Chain. If there aren't
 	 *         any Blocks in the chain, return null.
 	 */	 	  			     		 		    		 	
-	public Block maxValue() {	 	  			     		 		    		 	
-		return null;
+	public Block maxValue() {	
+		if(this.head == null) {
+			return null;
+		}
 		
+		int tempMax = this.head.id;
+		Block current = this.head;
+		Block max = this.head;
+		
+		while(current != null) {
+			if(current.id > tempMax) {
+				tempMax = current.id;
+				max = current;
+			}
+			current = current.next;
+		}
+		return max;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	
