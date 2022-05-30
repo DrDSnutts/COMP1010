@@ -20,6 +20,7 @@ public class Chain {
 	 */	 	  			     		 		    		 	
 	public Chain() {	 	  			     		 		    		 	
 		head = null;
+		tail = null;
 		// Attributes to be added
 	}	 	  		
 	
@@ -44,11 +45,26 @@ public class Chain {
 		if(id < 1) {
 			return null;
 		}
-		return null;
+		Block chain = new Block(id, rank);
+		this.head = chain;
 		
+		while(id > 1) {
+			if(id % 2 == 0) {
+				id = id/2;
+			}
+			else {
+				id = id*3+1;
+			}
+			rank++;
+			chain.addToFront(id, rank);
+			
+			
+		}
+		
+		return chain.next;
 	}	
 	
-
+	
 	
 
 	/**	 	  			     		 		    		 	

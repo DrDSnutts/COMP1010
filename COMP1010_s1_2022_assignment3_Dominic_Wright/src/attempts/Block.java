@@ -10,7 +10,8 @@ public class Block {
 	public int id; // Number
 	public int rank; // position in the Chain
 	public Block next;
-	
+	public Block head;
+	public Block tail;
 	
 
 	// attributes to be added
@@ -42,7 +43,11 @@ public class Block {
 		return count;
 	}
 	// Additional constructors may be added
-
+	
+	public void addToFront(int id, int rank) {
+		Block temp = new Block(id, rank, head);
+		head = temp;
+	}
 
 	// DO NOT MODIFY
 	public String toString() {	 	  			     		 		    		 	
