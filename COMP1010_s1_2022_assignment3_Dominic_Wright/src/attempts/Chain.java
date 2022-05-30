@@ -41,9 +41,12 @@ public class Chain {
 	 *         and another to check the efficiency of the code (HD).
 	 */	 	  			     		 		    		 	
 	public Block createChain(int id) {
+		
+		//if this function is being called rank and size are both at least 1
 		rank = 1;
 		size = 1;
 		
+		//base case
 		if(id < 1) {
 			return null;
 		}
@@ -55,8 +58,7 @@ public class Chain {
 	
 	
 	public Block createChainHelper (int id, int rank) {
-		
-		
+		//base cases
 		if(id < 1) {
 			return null;
 		}
@@ -73,7 +75,7 @@ public class Chain {
 		rank++;
 		size++;
 	
-		
+		//allocates id and rank to current block, calls functions for next block
 		return new Block(id,rank, createChainHelper(id,rank));
 		
 	}
@@ -85,8 +87,7 @@ public class Chain {
 	 *         the code (HD).
 	 */	 	  			     		 		    		 	
 	public int size() {	 	 
-		return size;
-		
+		return this.size;
 	}
 //		return count(this.head);
 //	}	 	
@@ -131,9 +132,15 @@ public class Chain {
 	 *         id is non-positive, return null.
 	 */	 	  			     		 		    		 	
 	public Chain createFasterChain(int id) {	 	  			     		 		    		 	
+		if(id < 1) {
+			return null;
+		}
+		
 		return null;
-	}	 	  			     		 		    		 	
 
+	}	 	
+	
+	
 	/**	 	  			     		 		    		 	
 	 * 
 	 * @param other
