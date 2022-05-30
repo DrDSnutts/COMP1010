@@ -55,8 +55,6 @@ public class Chain {
 	
 	}	
 	
-	
-	
 	public Block createChainHelper (int id, int rank) {
 		//base cases
 		if(id < 1) {
