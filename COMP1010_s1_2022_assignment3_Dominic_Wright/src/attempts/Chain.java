@@ -9,6 +9,7 @@ package attempts;
 public class Chain {
 	public Block head = null;
 	public int rank;
+	public int size;
 	// Attributes to be added
 
 	/**	 	  			     		 		    		 	
@@ -46,14 +47,8 @@ public class Chain {
 			return null;
 		}
 		
-		if(head == null) {
-			return this.head = new Block(id, rank, createChainHelper(id,rank))	;		
-		}
-		
-		return null;
-		
-		
-		
+		return this.head = new Block(id, rank, createChainHelper(id,rank))	;
+	
 	}	
 	
 	
@@ -74,6 +69,7 @@ public class Chain {
 			id = id*3+1;
 		}
 		rank++;
+	
 		
 		return new Block(id,rank, createChainHelper(id,rank));
 		
@@ -86,14 +82,16 @@ public class Chain {
 	 *         the code (HD).
 	 */	 	  			     		 		    		 	
 	public int size() {	 	  			     		 		    		 	
-		int count = 0;
-		Block current = this.head;
-		while(current != null) {
-			count++;
-			current = current.next;
+		return count(this.head);
+	}	 	
+	
+	public int count(Block block) {
+		if(block == null) {
+			return 0;
 		}
-		return count;
-	}	 	  			     		 		    		 	
+		size = 1 + count(block.next);
+		return size;
+	}
 
 	/**	 	  			     		 		    		 	
 	 * 
@@ -101,18 +99,8 @@ public class Chain {
 	 *         any Blocks in the chain, return null.
 	 */	 	  			     		 		    		 	
 	public Block maxValue() {	 	  			     		 		    		 	
-		Block current = this.head;
-		int max = current.id;
-		Block maxBlock = current;
+		return null;
 		
-		while(current != null) {
-			if(current.id > max) {
-				max = current.id;
-				maxBlock = current;
-			}
-			current = current.next;
-		}
-		return maxBlock;
 	}	 	  			     		 		    		 	
 
 	/**	 	  			     		 		    		 	

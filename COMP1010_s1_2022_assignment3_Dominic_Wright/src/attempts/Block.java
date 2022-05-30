@@ -100,29 +100,30 @@ public class Block {
 	 *         collatz chain should be treated as invalid.
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 	  			     		 		    		 	
-		Block current = this;
-		int temp = 0;
-		int counter = 0;
-		int size = size();
-		
-		for(int i = 0; i<size-1; i++) {
-			if(current.id % 2 == 0) {
-				temp = current.id/2;
-			}
-			else {
-				temp = current.id*3+1;
-			}
-			
-			if(temp == current.next.id) {
-				counter++;
-			}
-			current = current.next;
-		}
-		
-		if(counter >= size-1) {
-			return true;
-		}	
-
+//		Block current = this;
+//		int temp = 0;
+//		int counter = 0;
+//		int size = size();
+//		
+//		for(int i = 0; i<size-1; i++) {
+//			if(current.id % 2 == 0) {
+//				temp = current.id/2;
+//			}
+//			else {
+//				temp = current.id*3+1;
+//			}
+//			
+//			if(temp == current.next.id) {
+//				counter++;
+//			}
+//			current = current.next;
+//		}
+//		
+//		if(counter >= size-1) {
+//			return true;
+//		}	
+//
+//		return false;
 		return false;
 	}
 		
