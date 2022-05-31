@@ -99,31 +99,32 @@ public class Block {
 	 *         follow the 3n+1 rule but not necessarily have a valid rank. The fast
 	 *         collatz chain should be treated as invalid.
 	 */	 	  			     		 		    		 	
-	public boolean isValid() {	 	  			     		 		    		 	
-//		Block current = this;
-//		int temp = 0;
-//		int counter = 0;
-//		int size = size();
-//		
-//		for(int i = 0; i<size-1; i++) {
-//			if(current.id % 2 == 0) {
-//				temp = current.id/2;
-//			}
-//			else {
-//				temp = current.id*3+1;
-//			}
-//			
-//			if(temp == current.next.id) {
-//				counter++;
-//			}
-//			current = current.next;
-//		}
-//		
-//		if(counter >= size-1) {
-//			return true;
-//		}	
-//
-//		return false;
+	public boolean isValid() {	 
+		Block next = this.next;
+		Block cur = this;
+		
+		if(cur.id == 1 && next == null) {
+			return true;
+		}
+		
+		if(cur.id != 1 && next == null) {
+			return false;
+		}
+		
+		while(next != null) {
+			if (cur.id % 2 == 0) {
+				if (cur.id / 2 == next.id) {
+					return true;
+				}
+				return false;
+			} 
+			else {
+				if (3 * cur.id + 1 == next.id) {
+					return true;
+				}
+			}
+		}
+
 		return false;
 	}
 		
