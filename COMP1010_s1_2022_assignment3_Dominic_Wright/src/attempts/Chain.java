@@ -55,6 +55,12 @@ public class Chain {
 	
 	}	
 	
+	/**
+	 * 
+	 * @param id 
+	 * @param rank 
+	 * @return a chain of blocks that is of valid Collatz Conjecture
+	 */
 	public Block createChainHelper (int id, int rank) {
 		//base cases
 		if(id < 1) {
