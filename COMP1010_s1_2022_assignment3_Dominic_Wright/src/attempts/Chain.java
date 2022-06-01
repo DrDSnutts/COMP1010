@@ -51,7 +51,7 @@ public class Chain {
 			return null;
 		}
 		
-		return this.head = new Block(id, rank, createChainHelper(id,rank))	;
+		return this.head = new Block(id, rank, addBlocks(id,rank))	;
 	
 	}	
 	
@@ -61,7 +61,7 @@ public class Chain {
 	 * @param rank 
 	 * @return a chain of blocks that is of valid Collatz Conjecture
 	 */
-	public Block createChainHelper (int id, int rank) {
+	public Block addBlocks (int id, int rank) {
 		//base cases
 		if(id < 1) {
 			return null;
@@ -80,7 +80,7 @@ public class Chain {
 		size++;
 	
 		//allocates id and rank to current block, calls functions for next block
-		return new Block(id,rank, createChainHelper(id,rank));
+		return new Block(id,rank, addBlocks(id,rank));
 		
 	}
 
