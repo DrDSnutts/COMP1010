@@ -100,32 +100,41 @@ public class Block {
 	 *         collatz chain should be treated as invalid.
 	 */	 	  			     		 		    		 	
 	public boolean isValid() {	 
-		Block next = this.next;
-		Block cur = this;
+		return collatzCheck(this);
+	}
+	
+	public boolean collatzCheck(Block block) {
+		Block next = block.next;
+		Block cur = block;
 		
 		if(cur.id == 1 && next == null) {
 			return true;
 		}
 		
-		if(cur.id != 1 && next == null) {
+		if(block.id == 1 && next != null) {
 			return false;
 		}
+
 		
-		while(next != null) {
-			if (cur.id % 2 == 0) {
-				if (cur.id / 2 == next.id) {
-					return true;
-				}
-				return false;
-			} 
+		if (cur.id % 2 == 0 && next != null) {
+			int temp = cur.id/2;
+			if (temp == next.id) {
+				return collatzCheck(next);
+			}
+			return false;
+		} 
+		else {
+			int temp = 3*cur.id+1;
+			if (temp == next.id && next != null) {
+				return collatzCheck(next);
+			}
 			else {
-				if (3 * cur.id + 1 == next.id) {
-					return true;
-				}
+				return false;
 			}
 		}
 
-		return false;
+		
+		
 	}
 		
 	
