@@ -35,7 +35,9 @@ class Box {
 	 * @param width: to be copied into instance variable width
 	 */
 	public Box(int depth, int height, int width) {
-		//to be completed
+		this.depth = depth;
+		this.height = height;
+		this.width = width;
 	}
 
 	/**
@@ -52,6 +54,9 @@ class Box {
 	 * @return true if the box is a Cube (all three sides are equal), false otherwise
 	 */
 	public boolean isCube() {
+		if(this.depth == this.height && this.height == this.width) {
+			return true;
+		}
 		return false;
 	}
 
@@ -63,6 +68,12 @@ class Box {
 	 *         0 if calling object has the same volume as parameter object
 	 */
 	public int compareTo(Box other) {
+		if(this.volume() > other.volume()) {
+			return 1;
+		}
+		if(other.volume() > this.volume()) {
+			return -1;
+		}
 		return 0;
 	}
 }
