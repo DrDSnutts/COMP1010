@@ -61,6 +61,22 @@ public class Question8 { //begin class
 			return null;
 		}
 		
+		Node outer = start;
+		Node inner = null;
+		Node result = null;
+		
+		while(outer != null && result == null) {
+			inner = outer.next;
+			
+			while(inner != null && result == null) {
+			if(inner.data == outer.data) {
+				result = outer;
+			}
+			inner = inner.next;
+		}
+		outer = outer.next;
+		}
+		return result;
 		
 	}
 
