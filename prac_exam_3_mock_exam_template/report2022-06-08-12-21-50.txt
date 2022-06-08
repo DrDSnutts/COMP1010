@@ -1,0 +1,3 @@
+Score = 5
+MyLinkedList:sumInRange(int) passed. Marks awarded: 5
+

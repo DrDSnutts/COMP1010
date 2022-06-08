@@ -1,0 +1,3 @@
+Score = 10
+testCountEvenArrayList(ArrayList<Integer>) passed. Marks awarded: 10
+

@@ -60,7 +60,16 @@ public class Question7 { //begin class
 	 * [low, high] (inclusive)
 	 */
 	public int sumInRange(int low, int high, Node cur) {
-		return 0;
+		Node current = cur;
+		int sum = 0;
+		
+		while(current != null) {
+			if(current.data <= high && current.data >= low) {
+				sum = sum+current.data;
+			}
+			current = current.next;
+		}
+		return sum;
 	}
 
 	//IMPORTANT!!! DO NOT MODIFY ANY CODE BELOW THIS LINE!

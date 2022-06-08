@@ -27,7 +27,23 @@ public class Question3 { //begin class
 	 * if list = [40], return 40
 	 */
 	public static int differenceEvenOddIndices(ArrayList<Integer> list) {
-		return 0;
+		if(list == null) {
+			return 0;
+		}
+		
+		int total = 0;
+		
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i)/10 % 2 == 0) {
+				total = total + list.get(i);
+			}
+			else {
+				total = total - list.get(i);
+			}
+		}
+		
+		
+		return total;
 	}
 
     //IMPORTANT!!! DO NOT MODIFY ANY CODE BELOW THIS LINE!

@@ -57,7 +57,11 @@ public class Question8 { //begin class
 	 * @return first node, starting at start, that occurs more than once
 	 */
 	public Node firstDuplicate(Node start) {
-		return null;
+		if(start == null || size(start) == 0) {
+			return null;
+		}
+		
+		
 	}
 
 	//IMPORTANT!!! DO NOT MODIFY ANY CODE BELOW THIS LINE!

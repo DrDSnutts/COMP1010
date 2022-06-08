@@ -26,7 +26,14 @@ public class Question2 { //begin class
  	 * hint: n%10 gives the last digit, n/10 gives the rest of the number
  	 */
 	public static boolean containsDigitRecursive(int n, int d) {
-		return false;
+		if(n <= 0) {
+			return false;
+		}
+		
+		if(n%10 == d) {
+			return true;
+		}
+		return containsDigitRecursive(n/10, d);
 	}
 
     //IMPORTANT!!! DO NOT MODIFY ANY CODE BELOW THIS LINE!

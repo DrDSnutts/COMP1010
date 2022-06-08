@@ -23,7 +23,21 @@ public class Question6 { //begin class
 	 * @return reverse of the list
 	 */
 	public static ArrayList<Integer> reverse(ArrayList<Integer> list) {
-		return null;
+		if(list == null) {
+			return null;
+		}
+		
+		if(list.size() == 0) {
+			return list;
+		}
+		
+		ArrayList<Integer> reversedList = new ArrayList<Integer>();
+		
+		for(int i = list.size()-1; i>=0; i--) {
+			reversedList.add(list.get(i));
+		}
+		
+		return reversedList;
 	}
 
 	public static String currentMethodName = null;

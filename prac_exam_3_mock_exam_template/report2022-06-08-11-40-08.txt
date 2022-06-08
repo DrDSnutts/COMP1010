@@ -1,0 +1,4 @@
+Score = 20
+testCountEvenArrayList(ArrayList<Integer>) passed. Marks awarded: 10
+containsDigitRecursive(int, int) passed. Marks awarded: 10
+

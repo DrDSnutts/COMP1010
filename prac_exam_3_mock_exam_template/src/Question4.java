@@ -26,7 +26,15 @@ public class Question4 { //begin class
 	 * if str = "", return ""
  	 */
 	public static String withoutSpacesRecursive(String str) {
-		return "";
+		
+		for(int i = 0; i<str.length(); i++) {
+			if(str.charAt(i) == ' ') {
+				String newStr = str.substring(0,i) + str.substring(i + 1);
+				return withoutSpacesRecursive(newStr);
+			}	
+		}
+		
+		return str;
 	}
 
     //IMPORTANT!!! DO NOT MODIFY ANY CODE BELOW THIS LINE!
